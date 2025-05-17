@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: "blog-ome.local",
+        hostname: "10.10.51.16",
         pathname: "/**",
       },
     ],

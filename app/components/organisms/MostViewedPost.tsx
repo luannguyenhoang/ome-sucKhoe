@@ -69,7 +69,9 @@ export const MostViewedPost = () => {
         <div className="relative text-white rounded overflow-hidden h-[260px] z-0">
           <div>
             <Image
-              src={posts[0]?.featured_image || posts[0]?.image || "/banner.jpg"}
+              src={
+                posts[0]?.featured_image || posts[0]?.image || "/no-image.jpeg"
+              }
               alt={posts[0]?.title || "Banner background"}
               fill
               sizes="(max-width: 768px) 100vw, 350px"
@@ -78,7 +80,6 @@ export const MostViewedPost = () => {
           </div>
         </div>
         <div className="text-white w-[80%] mx-auto mt-[-30px] rounded-lg h-auto bg-white z-30 relative pb-5 p-2">
-
           <Link href={`/${posts[0]?.slug}`} className="block group">
             <div className="p-3 border-b">
               <div className="text-gray-500 text-xs uppercase mb-1">
@@ -87,7 +88,7 @@ export const MostViewedPost = () => {
               </div>
               <h3 className="font-bold text-base text-black mb-1 leading-tight">
                 <span className="relative">
-                <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_2px),#000000FF_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
+                  <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_2px),#000000FF_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
                     {xss(posts[0]?.title) ||
                       "Có nên học văn bằng 2 ngôn ngữ Anh không? Học ở đâu là tốt nhất?"}
                   </span>
@@ -153,4 +154,4 @@ export const MostViewedPost = () => {
       </div>
     </div>
   );
-}
+};

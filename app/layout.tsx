@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import "../styles/globals.css";
 import Navbar from "./components/organisms/Navbar";
-import { Providers } from "./providers";
 
 const Footer = dynamic(() =>
   import("./components/molecules/Footer").then((mod) => mod.Footer)
@@ -21,11 +20,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>
-          <Navbar />
-          {children}
-          <Footer />
-        </Providers>
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

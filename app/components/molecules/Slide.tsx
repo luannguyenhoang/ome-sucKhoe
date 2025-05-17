@@ -4,7 +4,6 @@ import {
   getCategoryColor,
   getCategoryDisplayName,
 } from "@/utils/getCategoryDisplayNameAndColor";
-import { Box } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import xss from "xss";
@@ -18,7 +17,7 @@ export default function Slide({ post }: SlideProps) {
     <div className="relative w-full h-[720px] overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src={post.featured_image || "/banner.jpg"}
+          src={post.featured_image || "/no-image.jpeg"}
           alt={post.title || "banner"}
           fill
           sizes="100vw"
@@ -28,8 +27,8 @@ export default function Slide({ post }: SlideProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
       </div>
 
-      <Box className="absolute w-full px-14 lg:px-0 justify-center z-20 text-white flex items-center h-full select-none">
-        <Box w={"7xl"}>
+      <div className="absolute w-full px-14 lg:px-0 justify-center z-20 text-white flex items-center h-full select-none">
+        <div className="max-w-7xl w-full">
           <div className="mb-3">
             <span
               className={`inline-block ${getCategoryColor(
@@ -81,8 +80,8 @@ export default function Slide({ post }: SlideProps) {
             borderColor="border-blue-700"
             rounded="rounded-md"
           />
-        </Box>
-      </Box>
+        </div>
+      </div>
     </div>
   );
 }

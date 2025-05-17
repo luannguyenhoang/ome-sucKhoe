@@ -61,7 +61,7 @@ export async function GET(req: NextRequest) {
       slug: node.slug,
       date: node.date,
       excerpt: node.excerpt,
-      featured_image: node.featuredImage?.node?.mediaItemUrl || "",
+      featured_image: node.featuredImage?.node?.mediaItemUrl || "/no-image.jpeg",
       categories: node.categories.nodes.map((cat: any) => cat.slug),
     }));
 

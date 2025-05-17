@@ -3,7 +3,6 @@
 import { formatDate } from "@/utils/date";
 import { getCategoryColor } from "@/utils/getCategoryDisplayNameAndColor";
 import { toSlug } from "@/utils/toSlug";
-import { Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import xss from "xss";
@@ -70,12 +69,10 @@ export const CardBlogVert = ({
             />
           </h3>
         </div>
-        <Flex width={"fit-content"} gap={3}>
-          <Text className="text-sm text-gray-500 font-bold">BY ADMIN</Text>
-          <Text className="text-sm text-gray-500">
-            {formatDate(date || "")}
-          </Text>
-        </Flex>
+        <div className="flex w-fit gap-3">
+          <p className="text-sm text-gray-500 font-bold">BY ADMIN</p>
+          <p className="text-sm text-gray-500">{formatDate(date || "")}</p>
+        </div>
 
         <div
           className="text-gray-500 text-sm"

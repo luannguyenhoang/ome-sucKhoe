@@ -2,7 +2,12 @@ import { getSeoData } from "@/utils/getSeoData";
 import { generateMetadataFromFullHead } from "@/utils/seoUtils";
 import { Metadata } from "next";
 import { GET_SEO_Y_HOC_CONG_DONG } from "../api/Graphql/yHocCongDong";
-import LayoutYHoc from "../components/templates/LayoutYHoc";
+import dynamic from "next/dynamic";
+
+
+const LayoutYHoc = dynamic(() =>
+  import("../components/templates/LayoutYHoc").then((mod) => mod.LayoutYHoc)
+);
 
 export async function generateMetadata(): Promise<Metadata> {
   const { seo } = await getSeoData(GET_SEO_Y_HOC_CONG_DONG, "pageBy");

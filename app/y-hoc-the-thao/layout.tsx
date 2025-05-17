@@ -1,15 +1,11 @@
 import { getSeoData } from "@/utils/getSeoData";
 import { generateMetadataFromFullHead } from "@/utils/seoUtils";
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
-import { GET_SEO_NHI_KHOA } from "../api/Graphql/nhiKhoa";
-
-const LayoutYHoc = dynamic(() =>
-  import("../components/templates/LayoutYHoc").then((mod) => mod.LayoutYHoc)
-);
+import { ReactNode } from "react";
+import { GET_SEO_Y_HOC_THE_THAO } from "../api/Graphql/yHocTheThao";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { seo } = await getSeoData(GET_SEO_NHI_KHOA, "pageBy");
+  const { seo } = await getSeoData(GET_SEO_Y_HOC_THE_THAO, "pageBy");
 
   return {
     ...generateMetadataFromFullHead(
@@ -20,6 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Page() {
-  return <LayoutYHoc path="nhi-khoa" />;
-}
+const Layout = ({ children }: { children: ReactNode }) => {
+  return <>{children}</>;
+};
+
+export default Layout;
