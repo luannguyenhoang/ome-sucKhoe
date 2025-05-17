@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import React from "react";
 
 export default function DefaultLayout({
@@ -7,8 +6,8 @@ export default function DefaultLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Box maxW={"7xl"} mx={"auto"}  className="md:px-2">
+    <div className="max-w-7xl mx-auto md:px-2">
       {children}
-    </Box>
+    </div>
   );
 }

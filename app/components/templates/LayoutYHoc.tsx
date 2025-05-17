@@ -12,7 +12,7 @@ const ListPosts = dynamic(() =>
   import("@/app/posts/ListPosts").then((mod) => mod.ListPosts)
 );
 
-export default function LayoutYHoc({ path }: { path?: string }) {
+export const LayoutYHoc = ({ path }: { path?: string }) => {
   const router = useRouter();
 
   const handleRouter = ({ selected }: { selected: number }) => {

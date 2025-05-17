@@ -1,49 +1,45 @@
 "use client";
 
 import { menus } from "@/router";
-import {
-  Accordion,
-  AccordionItem,
-  Box,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
-  IconButton,
-  Image,
-  Link,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { Menu } from "lucide-react";
-import NextLink from "next/link";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function MobileMenu() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  return (
-    <Box display={{ base: "block", lg: "none" }}>
-      <IconButton
-        aria-label="Open menu"
-        icon={<Menu size={24} />}
-        variant="ghost"
-        onClick={onOpen}
-      />
+  const onOpen = () => setIsOpen(true);
+  const onClose = () => setIsOpen(false);
 
-      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader
-            borderBottomWidth="1px"
-            display="flex"
-            alignItems="center"
-            gap={2}
-          >
+  return (
+    <div className="block lg:hidden">
+      <button
+        aria-label="Open menu"
+        className="p-2 rounded-md hover:bg-gray-100"
+        onClick={onOpen}
+      >
+        <Menu size={24} />
+      </button>
+
+      {/* Overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity"
+          onClick={onClose}
+        />
+      )}
+
+      {/* Drawer */}
+      <div 
+        className={`fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="flex justify-between items-center p-4 border-b">
+          <div className="flex items-center gap-2">
             <Image
               src="/logo.png"
               alt="Logo"
@@ -51,36 +47,40 @@ export default function MobileMenu() {
               height={55}
               style={{ objectFit: "cover" }}
             />
-            <Text fontSize="2xl" fontWeight="bold">
+            <p className="text-2xl font-bold">
               OM&apos;E
-            </Text>
-          </DrawerHeader>
+            </p>
+          </div>
+          <button
+            className="p-2 rounded-md hover:bg-gray-100"
+            onClick={onClose}
+            aria-label="Close menu"
+          >
+            <X size={20} />
+          </button>
+        </div>
 
-          <DrawerBody>
-            <Accordion allowMultiple>
-              {menus.map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <AccordionItem key={item.href} border="none">
-                    <Link
-                      as={NextLink}
-                      href={item.href}
-                      color={isActive ? "green.500" : "black"}
-                      display="block"
-                      py={4}
-                      fontWeight="500"
-                      _hover={{ color: "green.500" }}
-                      onClick={onClose}
-                    >
-                      {item.title}
-                    </Link>
-                  </AccordionItem>
-                );
-              })}
-            </Accordion>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-    </Box>
+        <div className="p-4">
+          <div className="space-y-1">
+            {menus.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <div key={item.href} className="border-none">
+                  <Link
+                    href={item.href}
+                    className={`block py-4 font-medium hover:text-green-500 ${
+                      isActive ? 'text-green-500' : 'text-black'
+                    }`}
+                    onClick={onClose}
+                  >
+                    {item.title}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

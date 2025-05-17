@@ -1,5 +1,3 @@
-import { Button, Input, Textarea } from "@chakra-ui/react";
-
 export default function Form({ showTitle = false }: { showTitle?: boolean }) {
   return (
     <>
@@ -18,39 +16,39 @@ export default function Form({ showTitle = false }: { showTitle?: boolean }) {
 
       <form className="space-y-4">
         <div>
-          <Input
+          <input
             type="text"
             placeholder="Name*"
             className="w-full p-3 border bg-white border-[f0f0f0] rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-spartan"
           />
         </div>
         <div>
-          <Input
+          <input
             type="email"
             placeholder="E-mail*"
             className="w-full p-3 border bg-white border-[f0f0f0] rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-spartan"
           />
         </div>
         <div>
-          <Input
+          <input
             type="text"
             placeholder="Subject*"
             className="w-full p-3 border bg-white border-[f0f0f0] rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-spartan"
           />
         </div>
         <div>
-          <Textarea
+          <textarea
             placeholder="Your Message*"
             rows={4}
             className="w-full  bg-white p-3 border border-[f0f0f0] rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-spartan"
-          ></Textarea>
+          ></textarea>
         </div>
-        <Button
+        <button
           type="submit"
           className="bg-blue-600 uppercase text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors font-spartan font-medium"
         >
           Đăng Ký
-        </Button>
+        </button>
       </form>
     </>
   );
