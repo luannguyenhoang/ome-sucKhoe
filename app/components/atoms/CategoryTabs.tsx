@@ -17,9 +17,9 @@ export default function CategoryTabs({
   return (
     <div className="max-w-[900px] mx-auto mb-8">
       <div className="lg:flex items-center justify-between mb-4">
-        <div className="flex items-center ">
+        <div className="flex items-center lg:pb-0 pb-5">
           <h2 className="text-3xl font-bold text-black mr-2">Phổ biến nhất</h2>
-          <div className="h-2 w-2 rounded-full bg-blue-600 mr-1"></div>
+          <div className="h-2 w-2 rounded-full bg-[#2962ff] mr-1"></div>
           <div className="flex-1 gap-2 lg:mr-2">
             <div className="flex-1 min-w-8 h-[1px] mb-1 bg-gray-200"></div>
             <div className="flex-1 min-w-8 h-[1px] bg-gray-200"></div>
@@ -36,7 +36,7 @@ export default function CategoryTabs({
                   key={slug}
                   className={`px-4 py-3 text-sm font-bold transition-all duration-200 ${
                     isActive
-                      ? `bg-blue-600 text-white shadow-md relative`
+                      ? `bg-[#2962ff] text-white shadow-md relative`
                       : `text-gray-700 hover:bg-gray-100 ${
                           isPendingCategoryChange ? "opacity-60" : ""
                         }`

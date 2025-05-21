@@ -6,6 +6,7 @@ import { getData } from "@/lib/getData";
 import { useEffect, useState } from "react";
 import LoadingOverlay from "../atoms/LoadingOverlay";
 import Form from "./Form";
+import { FormWrapper } from "./FormWrapper";
 
 export const Contact = () => {
   const [contactData, setContactData] = useState<any>(
@@ -171,7 +172,7 @@ export const Contact = () => {
             <h2 className="text-2xl font-bold mb-6 font-spartan">
               Để Lại Tin Nhắn
             </h2>
-            <Form />
+            <FormWrapper />
           </div>
         </div>
       )}

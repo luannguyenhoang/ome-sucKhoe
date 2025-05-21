@@ -87,9 +87,13 @@ export const WhatsNew = () => {
                           "Tin tức"}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-white leading-tight">
-                      {xss(posts[0]?.title) || "Post Title"}
-                    </h3>
+                    <div className="relative overflow-hidden group/title">
+                      <h3 className="text-xl font-bold text-white leading-tight">
+                        <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_2px),#FFFFFFFF_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover/title:bg-[length:100%_100%] transition-all duration-1000">
+                          {xss(posts[0]?.title) || "Post Title"}
+                        </span>
+                      </h3>
+                    </div>
                     <div className="text-xs text-white/70 mt-2">
                       {formatDate(posts[0]?.date || "Date")}
                     </div>

@@ -74,7 +74,7 @@ export default function Slide({ post }: SlideProps) {
             fontWeight="font-bold"
             uppercase={true}
             text="Đọc thêm"
-            bg="bg-blue-600"
+            bg="bg-[#2962ff]"
             hoverBg="bg-blue-700"
             textColor="text-white"
             borderColor="border-blue-700"
