@@ -9,7 +9,7 @@ export const BanerPost = ({ post }: { post: any }) => {
     <div className="relative w-full">
       <div className="relative w-full h-[500px] lg:h-[610px]">
         <Image
-          src={post?.featuredImage || "/placeholder.jpg"}
+          src={post?.featuredImage || "/no-image.jpeg"}
           alt={post?.title || ""}
           fill
           priority
