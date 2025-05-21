@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import Form from "../molecules/Form";
 
 const MostViewedPost = dynamic(() =>
   import("./MostViewedPost").then((mod) => mod.MostViewedPost)
@@ -21,6 +20,9 @@ const Event = dynamic(() =>
 
 const Category = dynamic(() =>
   import("../molecules/Category").then((mod) => mod.Category)
+);
+const FormWrapper = dynamic(() =>
+  import("../molecules/FormWrapper").then((mod) => mod.FormWrapper)
 );
 
 export const SliderBar = ({
@@ -45,7 +47,7 @@ export const SliderBar = ({
       {showContact && <SocialMediaContact />}
       {showNewPost && <MostViewedPost />}
       {showCategory && <Category />}
-      {showForm && <Form showTitle={true} />}
+      {showForm && <FormWrapper showTitle={true} />}
     </div>
   );
 };

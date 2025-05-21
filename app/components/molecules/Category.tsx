@@ -75,9 +75,9 @@ export const Category = () => {
 
   return (
     <div className="mb-8">
-      <div className="flex items-center mb-7">
+      <div className="flex items-center mb-7 pt-5">
         <h2 className="text-2xl font-bold text-black mr-2 uppercase">
-          DANH MỤC NÓNG
+          DANH MỤC TIN TỨC
         </h2>
         <div className="h-2 w-2 rounded-full bg-blue-600 mr-1"></div>
         <div className="flex-1 gap-2">

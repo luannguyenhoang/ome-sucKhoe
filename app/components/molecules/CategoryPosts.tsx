@@ -125,9 +125,13 @@ export const CategoryPosts = () => {
                 >
                   {getCategoryDisplayName(displayCategory) || "Category"}
                 </span>
-                <h2 className="text-2xl font-bold leading-tight">
-                  {posts[0]?.title || "Post Title"}
-                </h2>
+                <div className="relative overflow-hidden group/title">
+                  <h2 className="text-2xl font-bold leading-tight">
+                    <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_2px),#FFFFFFFF_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover/title:bg-[length:100%_100%] transition-all duration-1000">
+                      {posts[0]?.title || "Post Title"}
+                    </span>
+                  </h2>
+                </div>
                 <div className="flex items-center space-x-4 mt-3 text-xs font text-white/80 uppercase">
                   {posts[0]?.author && <span>by {posts[0].author}</span>}
                   <span className="flex items-center space-x-1">
@@ -154,7 +158,7 @@ export const CategoryPosts = () => {
             </div>
           </div>
           <div className="max-w-[900px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mt-6">
-            {posts.slice(3,5).map((post: any, index: number) => {
+            {posts.slice(3, 5).map((post: any, index: number) => {
               return (
                 <CardPostCategory
                   key={index}

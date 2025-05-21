@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import "../styles/globals.css";
+import Cta from "./components/organisms/Cta";
 import Navbar from "./components/organisms/Navbar";
 
 const Footer = dynamic(() =>
@@ -12,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="vi">
       <head>
         <link
           rel="stylesheet"
@@ -23,6 +24,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Cta />
       </body>
     </html>
   );

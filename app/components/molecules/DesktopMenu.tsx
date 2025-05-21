@@ -45,13 +45,13 @@ export default function DesktopMenu() {
                   href={item.href}
                   className={`
                     text-end w-fit text-[15px] font-bold 
-                    ${isActive ? 'text-green-500' : 'text-gray-800'} 
+                    ${isActive ? 'text-[#026039]' : 'text-gray-800'} 
                     relative flex items-center gap-1 px-2 whitespace-nowrap
-                    hover:text-green-500 group
+                    hover:text-[#026039] group
                   `}
                 >
                   <span>{item.title}</span>
-                  <span className="absolute w-0 h-0.5 bottom-[-4px] left-1/2 transform -translate-x-1/2 bg-green-500 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                  <span className="absolute w-0 h-0.5 bottom-[-4px] left-1/2 transform -translate-x-1/2 bg-[#026039] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 </Link>
               );
             })}
