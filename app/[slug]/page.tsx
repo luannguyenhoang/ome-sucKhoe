@@ -9,8 +9,8 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { GET_POST_BY_SLUG } from "../api/Graphql/posts";
 import { LoadingPost } from "../components/atoms/LoadingPost";
-import DefaultLayout from "../components/templates/DefaultLayout";
 import { LayoutPost } from "../components/templates/LayoutPost";
+import LayoutDefault from "../components/templates/LayoutDefault";
 
 const Breadcrumb = dynamic(() =>
   import("../components/atoms/Breadcrumb").then((mod) => mod.Breadcrumb)
@@ -81,12 +81,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <>
       <div className="py-8 bg-[#F7F7F7] lg:px-0 px-3">
-        <DefaultLayout>
+        <LayoutDefault>
           <Breadcrumb post={post} />
-        </DefaultLayout>
+        </LayoutDefault>
       </div>
       <BanerPost post={post} />
-      <DefaultLayout>
+      <LayoutDefault>
         <LayoutPost post={post} m="lg:mt-20">
           <script
             type="application/ld+json"
@@ -98,7 +98,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <Post post={post} />
           </Suspense>
         </LayoutPost>
-      </DefaultLayout>
+      </LayoutDefault>
     </>
   );
 }

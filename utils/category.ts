@@ -1,4 +1,4 @@
-export const categories = [
+export const ALLOWED_CATEGORIES = [
   "y-hoc-co-truyen",
   "y-hoc-cong-dong",
   "nhi-khoa",

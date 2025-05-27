@@ -36,10 +36,10 @@ export default function Cta() {
 
   return (
     <div>
-      <div className="fixed top-1/2 right-0 z-[7] flex flex-col items-end">
-        <div className="relative">
+      <div className="fixed top-1/2 right-0 flex flex-col items-end z-10">
+        <div className="relative z-10">
           <button
-            className="flex items-center justify-center bg-orange-500 text-white border-none rounded-l-md cursor-pointer w-[50px] h-[140px] absolute right-0 top-[-50px]"
+            className="flex z-10 items-center justify-center bg-orange-500 text-white border-none rounded-l-md cursor-pointer w-[50px] h-[140px] absolute right-0 top-[-50px]"
             onClick={() => setShowPopup(true)}
           >
             <span className="font-medium [writing-mode:vertical-rl] rotate-180 text-center">

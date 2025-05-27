@@ -1,7 +1,7 @@
 "use client";
 
 import { Post } from "@/types/Post";
-import { categories } from "@/utils/category";
+import { ALLOWED_CATEGORIES } from "@/utils/category";
 import { getCategoryDisplayName } from "@/utils/getCategoryDisplayNameAndColor";
 import { useCallback, useEffect, useState } from "react";
 
@@ -49,7 +49,7 @@ export const useSliderData = () => {
   }, []);
 
   const getFallbackPosts = useCallback(() => {
-    return categories.map((category, index) => ({
+    return ALLOWED_CATEGORIES.map((category, index) => ({
       title: `Latest Article in ${getCategoryDisplayName(category)}`,
       slug: `latest-article-${category}`,
       category: category,
@@ -93,7 +93,7 @@ export const useSliderData = () => {
       }
 
       try {
-        const postsPromises = categories.map((category) =>
+        const postsPromises = ALLOWED_CATEGORIES.map((category) =>
           fetch(`/api/posts?category=${category}&size=1`, {
             next: { revalidate: 0 },
             cache: "no-store",

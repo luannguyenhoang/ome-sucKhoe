@@ -24,6 +24,9 @@ const Category = dynamic(() =>
 const FormWrapper = dynamic(() =>
   import("../molecules/FormWrapper").then((mod) => mod.FormWrapper)
 );
+const UpcomingEvents = dynamic(() =>
+  import("./UpcomingEvents").then((mod) => mod.UpcomingEvents)
+);
 
 export const SliderBar = ({
   showNewPostInDetail = true,
@@ -32,6 +35,7 @@ export const SliderBar = ({
   showEvent = true,
   showCategory = false,
   showForm = false,
+  showUpcomingEvents = false,
 }: {
   showNewPostInDetail?: boolean;
   showContact?: boolean;
@@ -39,6 +43,7 @@ export const SliderBar = ({
   showEvent?: boolean;
   showCategory?: boolean;
   showForm?: boolean;
+  showUpcomingEvents?: boolean;
 }) => {
   return (
     <div className="w-full  mx-auto lg:px-0 px-3 sticky top-24">
@@ -48,6 +53,7 @@ export const SliderBar = ({
       {showNewPost && <MostViewedPost />}
       {showCategory && <Category />}
       {showForm && <FormWrapper showTitle={true} />}
+      {showUpcomingEvents && <UpcomingEvents />}
     </div>
   );
 };

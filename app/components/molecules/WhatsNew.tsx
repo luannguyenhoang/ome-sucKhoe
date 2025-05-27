@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import xss from "xss";
 import CardNewPost from "../atoms/CardNewPost";
 import LoadingOverlay from "../atoms/LoadingOverlay";
+import { ALLOWED_CATEGORIES } from "@/utils/category";
 
 export const WhatsNew = () => {
   const [posts, setPosts] = useState<any[]>([]);
@@ -18,7 +19,7 @@ export const WhatsNew = () => {
       setIsLoading(true);
 
       try {
-        const res = await fetch(`/api/posts?size=5&offset=0`, {
+        const res = await fetch(`/api/posts?size=10&offset=0`, {
           next: { revalidate: 1 },
         });
 
@@ -29,7 +30,13 @@ export const WhatsNew = () => {
         const data: { posts: any[] } = await res.json();
 
         if (data.posts?.length) {
-          setPosts(data.posts);
+          const filteredPosts = data.posts.filter((post) =>
+            post.categories?.some((category: string) =>
+              ALLOWED_CATEGORIES.includes(category)
+            )
+          );
+
+          setPosts(filteredPosts.slice(0, 5));
         } else {
           setPosts([]);
         }

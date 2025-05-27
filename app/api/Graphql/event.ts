@@ -26,3 +26,29 @@ export const GET_EVENT = gql`
   }
 }
 `;
+export const GET_EVENT_UPCOMING = gql`
+ query MyQuery {
+  pageBy(id: "cG9zdDozMjE0NA==") {
+    event {
+      content2 {
+        date
+        endTime
+        eventname
+        fieldGroupName
+        name
+        starttime
+        banner {
+          node {
+            mediaItemUrl
+          }
+        }
+        logo {
+          node {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
+}
+`;

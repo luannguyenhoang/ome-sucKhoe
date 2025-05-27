@@ -5,8 +5,8 @@ import HomeIcon from "@/icons/HomeIcon";
 import { getCategoryDisplayName } from "@/utils/getCategoryDisplayNameAndColor";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import DefaultLayout from "./DefaultLayout";
 import { LayoutBottom } from "./LayoutBottom";
+import LayoutDefault from "./LayoutDefault";
 
 const ListPosts = dynamic(() =>
   import("@/app/posts/ListPosts").then((mod) => mod.ListPosts)
@@ -22,7 +22,7 @@ export const LayoutYHoc = ({ path }: { path?: string }) => {
   return (
     <div>
       <div className="py-7 bg- mb-16 bg-[#F7F7F7] lg:px-0 px-3 md:px-3">
-        <DefaultLayout>
+        <LayoutDefault>
           <div className="text-3xl mb-2 font-bold text-black">
             {getCategoryDisplayName(path)}
           </div>
@@ -34,9 +34,9 @@ export const LayoutYHoc = ({ path }: { path?: string }) => {
               {getCategoryDisplayName(path)}
             </span>
           </div>
-        </DefaultLayout>
+        </LayoutDefault>
       </div>
-      <DefaultLayout>
+      <LayoutDefault>
         <div className="pb-10 md:px-3">
           <LayoutBottom>
             <div>
@@ -44,7 +44,7 @@ export const LayoutYHoc = ({ path }: { path?: string }) => {
             </div>
           </LayoutBottom>
         </div>
-      </DefaultLayout>
+      </LayoutDefault>
     </div>
   );
 }

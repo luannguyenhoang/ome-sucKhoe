@@ -9,20 +9,25 @@ export default function CardNewPostInDetailPost({
   textColor = "text-black",
 }: {
   post: any;
-  categoryCounts: any;
+  categoryCounts?: any;
   textColor?: string;
 }) {
+  console.log(post);
   return (
+  
+    
     <Link
       href={`/${post.slug}`}
       className="flex items-center gap-4 cursor-pointer  relative py-4 group"
     >
       <div className="relative">
-        <div className="absolute right-0 top-2 border-2 border-white w-6 h-6 bg-gray-700 group-hover:bg-blue-600 rounded-full flex items-center justify-center z-10 transition-colors duration-300">
-          <span className="text-white text-xs font-bold">
-            {categoryCounts[post?.categories[0]] || 0}
-          </span>
-        </div>
+        {categoryCounts && (
+          <div className="absolute right-0 top-2 border-2 border-white w-6 h-6 bg-gray-700 group-hover:bg-blue-600 rounded-full flex items-center justify-center z-10 transition-colors duration-300">
+            <span className="text-white text-xs font-bold">
+              {categoryCounts[post?.categories[0]] || 0}
+            </span>
+          </div>
+        )}
         <div className="relative w-24 h-24 rounded-full overflow-hidden">
           <Image
             src={post.featured_image || "/no-image.jpeg"}

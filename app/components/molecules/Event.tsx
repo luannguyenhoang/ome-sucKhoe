@@ -19,7 +19,6 @@ export const Event = () => {
         setIsLoading(true);
         setError(null);
         const response = await getData(GET_EVENT);
-        console.log(response);
 
         if (!response) {
           throw new Error("No data received from API");

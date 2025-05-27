@@ -1,6 +1,5 @@
 "use client";
 
-import { categories } from "@/utils/category";
 import { formatDate } from "@/utils/date";
 import {
   getCategoryColor,
@@ -14,7 +13,7 @@ import xss from "xss";
 import CardPostCategory from "../atoms/CardPostCategory";
 import CategoryTabs from "../atoms/CategoryTabs";
 import LoadingOverlay from "../atoms/LoadingOverlay";
-
+import { ALLOWED_CATEGORIES } from "@/utils/category";
 export const CategoryPosts = () => {
   const searchParams = useSearchParams();
   const page = parseInt(searchParams.get("page") || "1", 10);
@@ -75,8 +74,8 @@ export const CategoryPosts = () => {
   }, [isLoading, activeCategory, page]);
 
   const handleCategoryChange = (index: number) => {
-    if (categories[index] !== activeCategory) {
-      const selectedCategory = categories[index];
+    if (ALLOWED_CATEGORIES[index] !== activeCategory) {
+      const selectedCategory = ALLOWED_CATEGORIES[index];
       setSelectedTabCategory(selectedCategory);
       setActiveCategory(selectedCategory);
       setIsPendingCategoryChange(true);

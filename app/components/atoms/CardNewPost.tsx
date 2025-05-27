@@ -9,7 +9,7 @@ import AnimateOnScroll from "./AnimateOnScroll";
 export default function CardNewPost({ post }: { post: any }) {
   return (
     <AnimateOnScroll>
-      <div className="flex gap-4 rounded-md transition-all duration-300 group">
+      <div className="flex gap-4 rounded-md transition-all duration-300 group lg:pt-0 pt-4">
         <Link
           href={`/${post.slug}`}
           className="block w-[120px] h-[full] relative rounded overflow-hidden flex-shrink-0"

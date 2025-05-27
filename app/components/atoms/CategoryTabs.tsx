@@ -1,4 +1,4 @@
-import { categories } from "@/utils/category";
+import { ALLOWED_CATEGORIES } from "@/utils/category";
 import { getCategoryDisplayName } from "@/utils/getCategoryDisplayNameAndColor";
 
 interface CategoryTabsProps {
@@ -15,8 +15,8 @@ export default function CategoryTabs({
   onCategoryChange,
 }: CategoryTabsProps) {
   return (
-    <div className="max-w-[900px] mx-auto mb-8">
-      <div className="lg:flex items-center justify-between mb-4">
+    <div className="max-w-[900px] mx-auto ">
+      <div className="lg:flex items-center justify-between">
         <div className="flex items-center lg:pb-0 pb-5">
           <h2 className="text-3xl font-bold text-black mr-2">Phổ biến nhất</h2>
           <div className="h-2 w-2 rounded-full bg-[#2962ff] mr-1"></div>
@@ -28,7 +28,7 @@ export default function CategoryTabs({
 
         <div className="border border-gray-200 rounded-sm overflow-hidden">
           <div className="flex">
-            {categories.map((slug, index) => {
+            {ALLOWED_CATEGORIES.map((slug, index) => {
               const isActive = selectedTabCategory === slug;
 
               return (

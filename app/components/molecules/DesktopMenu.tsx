@@ -24,18 +24,18 @@ export default function DesktopMenu() {
     <div className="hidden lg:block w-full transition-all duration-300 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="py-2 flex justify-center items-center gap-10">
-          <div className="mr-0 lg:mr-4 flex justify-center items-center gap-2">
-            <Image
-              src="/logo.png"
-              alt="Logo"
-              width={54}
-              height={54}
-              style={{ objectFit: "cover" }}
-            />
-            <p className="text-[25px] font-bold text-black">
-              OM&apos;E
-            </p>
-          </div>
+          <Link href={"/"}>
+            <div className="mr-0 lg:mr-4 flex justify-center items-center gap-2">
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={54}
+                height={54}
+                style={{ objectFit: "cover" }}
+              />
+              <p className="text-[25px] font-bold text-black">OM&apos;E</p>
+            </div>
+          </Link>
           <div className="flex space-x-4">
             {menus.map((item) => {
               const isActive = pathname === item.href;
@@ -45,7 +45,7 @@ export default function DesktopMenu() {
                   href={item.href}
                   className={`
                     text-end w-fit text-[15px] font-bold 
-                    ${isActive ? 'text-[#026039]' : 'text-gray-800'} 
+                    ${isActive ? "text-[#026039]" : "text-gray-800"} 
                     relative flex items-center gap-1 px-2 whitespace-nowrap
                     hover:text-[#026039] group
                   `}
