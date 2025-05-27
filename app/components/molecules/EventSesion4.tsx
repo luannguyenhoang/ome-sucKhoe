@@ -80,11 +80,11 @@ export const EventSesion4 = () => {
 
           <div>
             <ButtonAnimation
-              link={eventData?.linkevent || "/"}
+              link={eventData?.link || "/"}
               padding="px-5 py-2"
               fontWeight="font-medium"
               uppercase={true}
-              text="XEM NGAY"
+              text="Đăng kí tham gia"
               bg="bg-white"
               hoverBg="bg-gray-500"
               textColor="text-gray-800"

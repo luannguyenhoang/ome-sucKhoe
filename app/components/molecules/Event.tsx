@@ -94,11 +94,11 @@ export const Event = () => {
 
           <div className="flex justify-center">
             <ButtonAnimation
-              link={eventData?.linkevent || "/"}
+              link={eventData?.link || "/"}
               padding="px-5 py-4"
               fontWeight="font-bold"
               uppercase={true}
-              text="Xem ngay"
+              text="Đăng kí tham gia"
               bg="bg-blue-600"
               hoverBg="bg-blue-700"
               textColor="text-white"
