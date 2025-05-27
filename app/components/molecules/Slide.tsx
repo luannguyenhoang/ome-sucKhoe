@@ -70,7 +70,7 @@ export default function Slide({ post }: SlideProps) {
           <ButtonAnimation
             margin="mt-6"
             link={`/${post.slug}`}
-            padding="px-6 py-6"
+            padding="px-6 py-4"
             fontWeight="font-bold"
             uppercase={true}
             text="Đọc thêm"

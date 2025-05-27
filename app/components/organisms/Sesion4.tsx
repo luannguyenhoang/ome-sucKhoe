@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import AnimateOnScroll from "../atoms/AnimateOnScroll";
 
 const EventSesion4 = dynamic(() =>
   import("../molecules/EventSesion4").then((mod) => mod.EventSesion4)
@@ -19,7 +20,9 @@ export const Sesion4 = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-7 gap-10 lg:pt-24 py-12">
       <div className=" lg:col-span-5 px-3 lg:px-0">
-        <EventSesion4 />
+        <AnimateOnScroll>
+          <EventSesion4 />
+        </AnimateOnScroll>
         <div className="mt-[50px]">
           <LayoutNewPosts
             categorySlug="y-hoc-co-truyen"

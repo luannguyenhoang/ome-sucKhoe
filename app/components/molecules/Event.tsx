@@ -95,7 +95,7 @@ export const Event = () => {
           <div className="flex justify-center">
             <ButtonAnimation
               link={eventData?.linkevent || "/"}
-              padding="px-5 py-5"
+              padding="px-5 py-4"
               fontWeight="font-bold"
               uppercase={true}
               text="Xem ngay"
