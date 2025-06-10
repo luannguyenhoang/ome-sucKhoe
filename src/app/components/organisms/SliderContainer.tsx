@@ -36,7 +36,7 @@ export default function SliderContainer() {
       <SliderContent
         posts={posts}
         currentSlide={currentSlide}
-        sliderRef={sliderRef as React.RefObject<HTMLDivElement>}
+        sliderRef={sliderRef}
         handleTouchStart={handleTouchStart}
         handleTouchMove={handleTouchMove}
         handleTouchEnd={handleTouchEnd}

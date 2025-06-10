@@ -1,13 +1,13 @@
 "use client";
 
 import { Post } from "@/src/types/Post";
-import { MouseEvent, TouchEvent } from "react";
+import { MouseEvent, RefObject, TouchEvent } from "react";
 import Slide from "./Slide";
 
 interface SliderContentProps {
   posts: Post[];
   currentSlide: number;
-  sliderRef: React.RefObject<HTMLDivElement>;
+  sliderRef: RefObject<HTMLDivElement>;
   handleTouchStart: (e: TouchEvent) => void;
   handleTouchMove: (e: TouchEvent) => void;
   handleTouchEnd: () => void;
