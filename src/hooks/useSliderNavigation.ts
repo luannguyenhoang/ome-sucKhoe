@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEvent, TouchEvent, useCallback, useRef, useState } from "react";
+import { MouseEvent, TouchEvent, useCallback, useRef, useState, MutableRefObject } from "react";
 
 interface UseSliderNavigationProps {
   totalSlides: number;

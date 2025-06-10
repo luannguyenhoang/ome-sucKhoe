@@ -1,10 +1,10 @@
 "use client";
 
+import SidebarNavigation from "@/src/app/components/molecules/SidebarNavigation";
+import SliderContent from "@/src/app/components/molecules/SliderContent";
 import { useSidebarScroll } from "@/src/hooks/useSidebarScroll";
 import { useSliderData } from "@/src/hooks/useSliderData";
 import { useSliderNavigation } from "@/src/hooks/useSliderNavigation";
-import SidebarNavigation from "@/src/app/components/molecules/SidebarNavigation";
-import SliderContent from "@/src/app/components/molecules/SliderContent";
 
 export default function SliderContainer() {
   const { posts, loading } = useSliderData();

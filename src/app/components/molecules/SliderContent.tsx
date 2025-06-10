@@ -32,7 +32,7 @@ export default function SliderContent({
   return (
     <div
       className="relative overflow-hidden touch-pan-y cursor-grab"
-      ref={sliderRef as React.LegacyRef<HTMLDivElement>}
+      ref={sliderRef}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
