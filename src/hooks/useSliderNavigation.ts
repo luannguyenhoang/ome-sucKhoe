@@ -8,7 +8,7 @@ interface UseSliderNavigationProps {
 
 export const useSliderNavigation = ({ totalSlides }: UseSliderNavigationProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null) as unknown as React.RefObject<HTMLDivElement>;
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const [isDragging, setIsDragging] = useState(false);

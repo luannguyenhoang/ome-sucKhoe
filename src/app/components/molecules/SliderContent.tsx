@@ -1,13 +1,13 @@
 "use client";
 
 import { Post } from "@/src/types/Post";
-import { MouseEvent, RefObject, TouchEvent } from "react";
+import { MouseEvent, RefObject, TouchEvent, LegacyRef } from "react";
 import Slide from "./Slide";
 
 interface SliderContentProps {
   posts: Post[];
   currentSlide: number;
-  sliderRef: RefObject<HTMLDivElement>;
+  sliderRef: any;
   handleTouchStart: (e: TouchEvent) => void;
   handleTouchMove: (e: TouchEvent) => void;
   handleTouchEnd: () => void;
@@ -32,7 +32,7 @@ export default function SliderContent({
   return (
     <div
       className="relative overflow-hidden touch-pan-y cursor-grab"
-      ref={sliderRef}
+      ref={sliderRef as LegacyRef<HTMLDivElement>}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
