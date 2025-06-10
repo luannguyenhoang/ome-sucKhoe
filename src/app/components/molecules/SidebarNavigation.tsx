@@ -6,7 +6,7 @@ import ListCategorySlider from "./ListCategorySlider";
 interface SidebarNavigationProps {
   posts: Post[];
   currentSlide: number;
-  sidebarRef: React.RefObject<HTMLDivElement>;
+  sidebarRef: any;
   onSlideClick: (index: number) => void;
   registerActiveItemRef: (index: number, ref: HTMLButtonElement | null) => void;
 }
