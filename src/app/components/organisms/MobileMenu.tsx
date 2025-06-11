@@ -3,16 +3,16 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { menus, TMenuItem } from "@/src/router/router";
 
-const NestedMobileItem = ({ 
-  item, 
-  isActive, 
-  openSubmenus, 
-  toggleSubmenu, 
+const NestedMobileItem = ({
+  item,
+  isActive,
+  openSubmenus,
+  toggleSubmenu,
   level = 0,
-  onClose 
-}: { 
-  item: TMenuItem; 
-  isActive: (path: string) => boolean; 
+  onClose,
+}: {
+  item: TMenuItem;
+  isActive: (path: string) => boolean;
   openSubmenus: Record<string, boolean>;
   toggleSubmenu: (id: string) => void;
   level?: number;
@@ -21,13 +21,21 @@ const NestedMobileItem = ({
   const itemId = `${level}-${item.path}`;
   const hasChildren = item.childs && item.childs.length > 0;
   const isOpen = openSubmenus[itemId] || false;
-  
+
   return (
-    <li className={`relative border-b border-gray-100 ${level > 0 ? 'pl-4' : ''}`}>
-      <div className={`flex items-center justify-between cursor-pointer ${isActive(item.path) ? "bg-gray-50" : ""}`}>
+    <li
+      className={`relative border-b border-gray-100 ${level > 0 ? "pl-4" : ""}`}
+    >
+      <div
+        className={`flex items-center justify-between cursor-pointer ${
+          isActive(item.path) ? "bg-gray-50" : ""
+        }`}
+      >
         <Link
           href={item.path || "/"}
-          className={`block py-3 px-4 text-gray-800 hover:text-[#fdc800] font-medium flex-grow relative ${level > 0 ? 'pl-4' : ''}`}
+          className={`block py-3 px-4 text-gray-800 hover:text-[#fdc800] font-medium flex-grow relative ${
+            level > 0 ? "pl-4" : ""
+          }`}
           onClick={(e) => {
             if (hasChildren) {
               e.preventDefault();
@@ -41,9 +49,9 @@ const NestedMobileItem = ({
             <span className="absolute left-0 top-0 bottom-0 w-1 bg-[#fdc800]"></span>
           )}
         </Link>
-        
+
         {hasChildren && (
-          <div 
+          <div
             className="p-3 text-gray-800"
             onClick={(e) => {
               e.preventDefault();
@@ -52,7 +60,9 @@ const NestedMobileItem = ({
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "transform rotate-180" : ""}`}
+              className={`h-4 w-4 transition-transform duration-200 ${
+                isOpen ? "transform rotate-180" : ""
+              }`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -67,7 +77,7 @@ const NestedMobileItem = ({
           </div>
         )}
       </div>
-      
+
       {hasChildren && isOpen && (
         <ul className="border-t border-gray-100 bg-gray-50">
           {item.childs!.map((childItem) => (
@@ -104,9 +114,9 @@ export default function MobileMenu({
   };
 
   const toggleSubmenu = (id: string) => {
-    setOpenSubmenus(prev => ({
+    setOpenSubmenus((prev) => ({
       ...prev,
-      [id]: !prev[id]
+      [id]: !prev[id],
     }));
   };
 
@@ -174,7 +184,7 @@ export default function MobileMenu({
 
           <div
             ref={menuRef}
-            className="lg:hidden bg-white shadow-lg absolute left-0 right-0 top-24 z-20"
+            className="lg:hidden bg-white shadow-lg absolute left-0 right-0 top-32 z-20"
           >
             <nav>
               <ul className="space-y-0">
