@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const GET_SEO_SAN_PHU_KHOA = gql`
+export const GET_SEO_DINH_DUONG = gql`
   query MyQuery {
-    pageBy(id: "cG9zdDozMjIzOQ==") {
+    pageBy(uri: "dinh-duong") {
       seo {
         fullHead
       }
