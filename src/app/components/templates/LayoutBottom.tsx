@@ -10,9 +10,11 @@ const SliderBar = dynamic(() =>
 export const LayoutBottom = ({
   children,
   m,
+  path,
 }: {
   children: ReactNode;
   m?: string;
+  path?: string;
 }) => {
   return (
     <div className="mx-auto ">
@@ -23,6 +25,7 @@ export const LayoutBottom = ({
             showNewPost={false}
             showContact={false}
             showCategory={true}
+            path={path}
           />
         </div>
       </div>

@@ -71,7 +71,7 @@ export default function CardPostCategory({
               </span>
             </h3>
           </div>
-          <div className="flex items-center space-x-2 mt-2 text-xs font-semibold text-gray-400">
+          <div className="flex items-center space-x-2 mt-2 text-xs font-semibold text-gray-600">
             <span>{formatDate(postDate)}</span>
           </div>
         </div>

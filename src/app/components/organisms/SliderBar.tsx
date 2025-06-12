@@ -36,6 +36,7 @@ export const SliderBar = ({
   showCategory = false,
   showForm = false,
   showUpcomingEvents = false,
+  path,
 }: {
   showNewPostInDetail?: boolean;
   showContact?: boolean;
@@ -44,6 +45,7 @@ export const SliderBar = ({
   showCategory?: boolean;
   showForm?: boolean;
   showUpcomingEvents?: boolean;
+  path?: string;
 }) => {
   return (
     <div className="w-full  mx-auto lg:px-0 px-3 sticky top-10">
@@ -51,7 +53,7 @@ export const SliderBar = ({
       {showEvent && <Event />}
       {showContact && <SocialMediaContact />}
       {showNewPost && <MostViewedPost />}
-      {showCategory && <Category />}
+      {showCategory && <Category path={path} />}
       {showForm && <FormWrapper showTitle={true} />}
       {showUpcomingEvents && <UpcomingEvents />}
     </div>

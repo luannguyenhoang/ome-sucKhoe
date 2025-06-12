@@ -24,7 +24,7 @@ export default function CardNewPost({ post }: { post: any }) {
         </Link>
         <div className="flex flex-col justify-center flex-1 min-w-0">
           <div className="font-medium mb-1">
-            <span className="text-gray-400">
+            <span className="text-gray-600">
               {getCategoryDisplayName(post?.categories[0]) || "Tin tức"}
             </span>
           </div>
@@ -37,7 +37,7 @@ export default function CardNewPost({ post }: { post: any }) {
               </h3>
             </div>
           </Link>
-          <div className="text-xs text-gray-500 mt-1">
+          <div className="text-xs text-gray-700 mt-1">
             {formatDate(post?.date)}
           </div>
         </div>

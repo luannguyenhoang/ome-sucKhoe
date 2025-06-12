@@ -41,6 +41,7 @@ export default function Cta() {
           <button
             className="flex z-10 items-center justify-center bg-orange-500 text-white border-none rounded-l-md cursor-pointer w-[50px] h-[140px] absolute right-0 top-[-50px]"
             onClick={() => setShowPopup(true)}
+            aria-label="Mở form tư vấn"
           >
             <span className="font-medium [writing-mode:vertical-rl] rotate-180 text-center">
               Tư vấn ngay
@@ -53,6 +54,7 @@ export default function Cta() {
             target="_blank"
             href={ctaData.messenger}
             className="flex items-center justify-center w-12 h-12 bg-green-500 text-white rounded-l-full"
+            aria-label="Nhắn tin qua Messenger"
           >
             <BsMessenger size={20} />
           </a>
@@ -60,6 +62,7 @@ export default function Cta() {
             target="_blank"
             href={ctaData.zalo}
             className="flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-l-full"
+            aria-label="Liên hệ qua Zalo"
           >
             <SiZalo size={20} />
           </a>
@@ -67,6 +70,7 @@ export default function Cta() {
             target="_blank"
             href={ctaData.hotline}
             className="flex items-center justify-center w-12 h-12 bg-red-500 text-white rounded-l-full"
+            aria-label="Gọi hotline"
           >
             <BiPhone size={24} />
           </a>
@@ -79,6 +83,7 @@ export default function Cta() {
             <button
               className="absolute top-2.5 right-2.5 bg-transparent border-none text-xl cursor-pointer"
               onClick={() => setShowPopup(false)}
+              aria-label="Đóng form tư vấn"
             >
               ×
             </button>

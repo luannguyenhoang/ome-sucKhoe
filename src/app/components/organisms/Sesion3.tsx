@@ -90,37 +90,52 @@ export default function Sesion3() {
               >
                 <Link href={post.slug || "/"} className="block group h-full">
                   <div className="relative h-full w-full">
-                    <Image
-                      src={post.featured_image || "/no-image.jpeg"}
-                      alt={post.title}
-                      fill
-                      className={`object-cover transition-transform duration-300 group-hover:scale-105 ${
-                        loading ? "animate-pulse" : ""
-                      }`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
-                    <div className="absolute bottom-0 p-4 z-10">
-                      <div
-                        className={`text-xs font-bold text-white px-2 py-1 rounded-sm mb-2 inline-block ${getCategoryColor(
-                          post.category
-                        )}`}
-                      >
-                        {getCategoryDisplayName(post.category)}
+                    {loading ? (
+                      <div className="absolute inset-0 bg-gray-200 animate-pulse">
+                        <div className="absolute bottom-0 p-4 z-10 w-full">
+                          <div className="h-6 w-24 bg-gray-300 rounded-sm mb-2"></div>
+                          <div className="h-7 w-full bg-gray-300 rounded mb-1"></div>
+                          <div className="h-7 w-3/4 bg-gray-300 rounded mb-2"></div>
+                          <div className="flex space-x-2">
+                            <div className="h-4 w-20 bg-gray-300 rounded"></div>
+                            <div className="h-4 w-4 bg-gray-300 rounded-full"></div>
+                            <div className="h-4 w-24 bg-gray-300 rounded"></div>
+                          </div>
+                        </div>
                       </div>
-                      <h3 className="text-white text-lg font-bold mb-2 line-clamp-2">
-                        <span className="inline bg-[linear-gradient(transparent_calc(100%_-_2px),#FFF_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
-                          {post.title}
-                        </span>
-                      </h3>
-                      <div className="flex text-xs text-gray-300">
-                        <span>BY {post.author}</span>
-                        <span className="mx-2">•</span>
-                        <span>
-                          {post.date &&
-                            new Date(post.date).toLocaleDateString()}
-                        </span>
-                      </div>
-                    </div>
+                    ) : (
+                      <>
+                        <Image
+                          src={post.featured_image || "/no-image.jpeg"}
+                          alt={post.title}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+                        <div className="absolute bottom-0 p-4 z-10">
+                          <div
+                            className={`text-xs font-bold text-white px-2 py-1 rounded-sm mb-2 inline-block ${getCategoryColor(
+                              post.category
+                            )}`}
+                          >
+                            {getCategoryDisplayName(post.category)}
+                          </div>
+                          <h3 className="text-white text-lg font-bold mb-2 line-clamp-2">
+                            <span className="inline bg-[linear-gradient(transparent_calc(100%_-_2px),#FFF_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
+                              {post.title}
+                            </span>
+                          </h3>
+                          <div className="flex text-xs text-gray-300">
+                            <span>BY {post.author}</span>
+                            <span className="mx-2">•</span>
+                            <span>
+                              {post.date &&
+                                new Date(post.date).toLocaleDateString()}
+                            </span>
+                          </div>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </Link>
               </div>

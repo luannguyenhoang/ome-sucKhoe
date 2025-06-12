@@ -44,9 +44,11 @@ export default function TopCategoryPosts() {
   const [categoryPosts, setCategoryPosts] = useState<Record<string, Post[]>>(
     defaultTopCategoryPosts as Record<string, Post[]>
   );
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAllCategoryPosts = async () => {
+      setLoading(true);
       const postsData: Record<string, Post[]> = {};
       try {
         await Promise.all(
@@ -74,11 +76,41 @@ export default function TopCategoryPosts() {
         setCategoryPosts(postsData);
       } catch (error) {
         console.error("Error fetching category posts:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchAllCategoryPosts();
   }, []);
+
+  const renderSkeletonItem = () => (
+    <div className="flex flex-col relative">
+      <div className="mb-6 bg-white overflow-hidden border-b border-gray-200">
+        <div className="relative h-56 overflow-hidden rounded-md bg-gray-200 animate-pulse"></div>
+        <div className="py-4">
+          <div className="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
+          <div className="h-4 bg-gray-300 rounded w-full mb-1"></div>
+          <div className="h-4 bg-gray-300 rounded w-5/6 mb-3"></div>
+          <div className="flex items-center">
+            <div className="w-8 h-3 bg-gray-300 rounded mr-1"></div>
+            <div className="w-16 h-3 bg-gray-300 rounded mr-2"></div>
+            <div className="w-2 h-3 bg-gray-300 rounded mr-2"></div>
+            <div className="w-20 h-3 bg-gray-300 rounded"></div>
+          </div>
+        </div>
+      </div>
+      <div className="space-y-4">
+        {[1, 2].map((_, index) => (
+          <div key={index} className="border-b pb-4 border-gray-200">
+            <div className="h-5 bg-gray-300 rounded w-full mb-1"></div>
+            <div className="h-5 bg-gray-300 rounded w-3/4 mb-2"></div>
+            <div className="w-20 h-3 bg-gray-300 rounded mt-1"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <div className="py-10">
@@ -94,101 +126,114 @@ export default function TopCategoryPosts() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
-        {categoryConfigs.map((category, index) => {
-          const posts = categoryPosts[category.slug] || [];
-          const isNotLast = index < categoryConfigs.length - 1;
+        {loading ? (
+          <>
+            {[1, 2, 3].map((index) => (
+              <div key={`skeleton-${index}`} className="flex flex-col relative">
+                {index < 3 && (
+                  <div className="hidden lg:block absolute right-[-13px] top-0 bottom-0 w-[1px] bg-gray-200 z-10"></div>
+                )}
+                {renderSkeletonItem()}
+              </div>
+            ))}
+          </>
+        ) : (
+          categoryConfigs.map((category, index) => {
+            const posts = categoryPosts[category.slug] || [];
+            const isNotLast = index < categoryConfigs.length - 1;
 
-          return (
-            <div key={category.slug} className="flex flex-col relative">
-              {isNotLast && (
-                <div className="hidden lg:block absolute right-[-13px] top-0 bottom-0 w-[1px] bg-gray-200 z-10"></div>
-              )}
+            return (
+              <div key={category.slug} className="flex flex-col relative">
+                {isNotLast && (
+                  <div className="hidden lg:block absolute right-[-13px] top-0 bottom-0 w-[1px] bg-gray-200 z-10"></div>
+                )}
 
-              {posts.length === 0 ? (
-                <>
-                  <h3 className="text-xl font-bold mb-4">
-                    {category.displayName}
-                  </h3>
-                  <p className="text-gray-500">Không có bài viết.</p>
-                </>
-              ) : (
-                <>
-                  <AnimateOnScroll>
-                    <div className="mb-6 bg-white overflow-hidden border-b border-gray-200">
-                      <div className="relative h-56 overflow-hidden rounded-md">
-                        <Image
-                          src={posts[0]?.featured_image || "/no-image.jpeg"}
-                          alt={posts[0]?.title || ""}
-                          fill
-                          className="object-cover transition-transform hover:scale-105 rounded-md duration-500"
-                        />
-                        <div className="absolute top-3 left-3">
-                          <span
-                            className={`${getCategoryColor(
-                              category.slug
-                            )} text-white text-xs font-semibold px-3 py-1 rounded-md`}
-                          >
-                            {category.displayName}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="py-4">
-                        <h3 className="text-lg font-bold mb-2">
-                          <div className="relative overflow-hidden group">
-                            <Link href={`${posts[0]?.slug}`}>
-                              <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_2px),#000000_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
-                                {xss(posts[0]?.title || "")}
-                              </span>
-                            </Link>
-                          </div>
-                        </h3>
-                        {posts[0]?.excerpt && (
-                          <p
-                            className="text-gray-600 text-sm mb-3 line-clamp-2 overflow-hidden"
-                            dangerouslySetInnerHTML={{
-                              __html: xss(posts[0].excerpt),
-                            }}
+                {posts.length === 0 ? (
+                  <>
+                    <h3 className="text-xl font-bold mb-4">
+                      {category.displayName}
+                    </h3>
+                    <p className="text-gray-500">Không có bài viết.</p>
+                  </>
+                ) : (
+                  <>
+                    <AnimateOnScroll>
+                      <div className="mb-6 bg-white overflow-hidden border-b border-gray-200">
+                        <div className="relative h-56 overflow-hidden rounded-md">
+                          <Image
+                            src={posts[0]?.featured_image || "/no-image.jpeg"}
+                            alt={posts[0]?.title || ""}
+                            fill
+                            className="object-cover transition-transform hover:scale-105 rounded-md duration-500"
                           />
-                        )}
-                        <div className="flex items-center text-gray-500 text-xs">
-                          <span className="mr-1">By</span>
-                          <span className="font-medium uppercase mr-2">
-                            {posts[0]?.author?.name || "ADMIN"}
-                          </span>
-                          <span className="mr-2">•</span>
-                          <span>{formatDate(posts[0]?.date || "")}</span>
+                          <div className="absolute top-3 left-3">
+                            <span
+                              className={`${getCategoryColor(
+                                category.slug
+                              )} text-white text-xs font-semibold px-3 py-1 rounded-md`}
+                            >
+                              {category.displayName}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </AnimateOnScroll>
-                  <div className="space-y-4">
-                    {posts.slice(1).map((post, index) => (
-                      <AnimateOnScroll key={index}>
-                        <div
-                          key={post.id}
-                          className="border-b pb-4 border-gray-200"
-                        >
-                          <h4 className="text-base font-bold mb-2">
+                        <div className="py-4">
+                          <h3 className="text-lg font-bold mb-2">
                             <div className="relative overflow-hidden group">
-                              <Link href={`${post.slug}`}>
-                                <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_1px),#000000_calc(100%_-_1px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
-                                  {xss(post.title)}
+                              <Link href={`${posts[0]?.slug}`}>
+                                <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_2px),#000000_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
+                                  {xss(posts[0]?.title || "")}
                                 </span>
                               </Link>
                             </div>
-                          </h4>
-                          <div className="text-gray-400 text-xs mt-1">
-                            {formatDate(post.date || "")}
+                          </h3>
+                          {posts[0]?.excerpt && (
+                            <p
+                              className="text-gray-600 text-sm mb-3 line-clamp-2 overflow-hidden"
+                              dangerouslySetInnerHTML={{
+                                __html: xss(posts[0].excerpt),
+                              }}
+                            />
+                          )}
+                          <div className="flex items-center text-gray-500 text-xs">
+                            <span className="mr-1">By</span>
+                            <span className="font-medium uppercase mr-2">
+                              {posts[0]?.author?.name || "ADMIN"}
+                            </span>
+                            <span className="mr-2">•</span>
+                            <span>{formatDate(posts[0]?.date || "")}</span>
                           </div>
                         </div>
-                      </AnimateOnScroll>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-          );
-        })}
+                      </div>
+                    </AnimateOnScroll>
+                    <div className="space-y-4">
+                      {posts.slice(1).map((post, index) => (
+                        <AnimateOnScroll key={index}>
+                          <div
+                            key={post.id}
+                            className="border-b pb-4 border-gray-200"
+                          >
+                            <h4 className="text-base font-bold mb-2">
+                              <div className="relative overflow-hidden group">
+                                <Link href={`${post.slug}`}>
+                                  <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_1px),#000000_calc(100%_-_1px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
+                                    {xss(post.title)}
+                                  </span>
+                                </Link>
+                              </div>
+                            </h4>
+                            <div className="text-gray-400 text-xs mt-1">
+                              {formatDate(post.date || "")}
+                            </div>
+                          </div>
+                        </AnimateOnScroll>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

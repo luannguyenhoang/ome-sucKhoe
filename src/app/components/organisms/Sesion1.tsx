@@ -20,9 +20,11 @@ export const Sesion1 = () => {
   const [categoryCounts, setCategoryCounts] = useState<{
     [key: string]: number;
   }>({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchCategories = async () => {
+      setIsLoading(true);
       try {
         const data = await getData(GET_CATEGORY);
 
@@ -74,6 +76,7 @@ export const Sesion1 = () => {
         console.error("Failed to fetch categories:", err);
         setTopics(defaultTopics);
       }
+      setIsLoading(false);
     };
 
     fetchCategories();
@@ -192,9 +195,25 @@ export const Sesion1 = () => {
             className="flex transition-transform duration-300 ease-in-out w-full"
             style={getTransformStyle()}
           >
-            {topics.map((topic) => (
-              <CardTopic key={topic.id} topic={topic} screenSize={screenSize} />
-            ))}
+            {isLoading ? (
+              Array(itemsPerPage).fill(0).map((_, index) => (
+                <div
+                  key={`skeleton-${index}`}
+                  className={`relative rounded-md overflow-hidden ${
+                    screenSize === "sm" ? "w-full" : "w-56 mr-4"
+                  } h-64 flex-shrink-0 bg-gray-200 animate-pulse`}
+                >
+                  <div className="absolute bottom-3 w-full flex flex-col items-center justify-center">
+                    <div className="h-6 bg-gray-300 rounded w-28 mb-2"></div>
+                    <div className="h-4 bg-gray-300 rounded w-10"></div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              topics.map((topic) => (
+                <CardTopic key={topic.id} topic={topic} screenSize={screenSize} />
+              ))
+            )}
           </div>
         </div>
       </div>

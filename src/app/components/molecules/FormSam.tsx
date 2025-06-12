@@ -11,6 +11,7 @@ const createIframeForSam = (
   const iframeUrl = `${url}?referrer=${encodeURIComponent(referrer)}`;
   const iframe = document.createElement("iframe");
   iframe.setAttribute("src", iframeUrl);
+  iframe.setAttribute("title", "Form đăng ký SAM");
   iframe.style.width = "100%";
   iframe.style.minHeight = "450px";
   iframe.classList.add(divClass);

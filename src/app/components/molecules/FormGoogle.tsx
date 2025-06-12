@@ -23,6 +23,7 @@ export const FormGoogle: React.FC<FormGoogleProps> = ({ url, divId }) => {
       iframe.frameBorder = "0";
       iframe.marginHeight = "0";
       iframe.marginWidth = "0";
+      iframe.title = "Form đăng ký Google";
       container.appendChild(iframe);
     }
   }, [url, divId]);

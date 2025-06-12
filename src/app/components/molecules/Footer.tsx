@@ -65,18 +65,21 @@ export const Footer = () => {
               <Link
                 href={footerData?.url?.linkFacebook || "#"}
                 className="w-10 h-10 bg-[#2b2b2b] rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                aria-label="Facebook"
               >
                 <i className="fab fa-facebook-f"></i>
               </Link>
               <Link
                 href={footerData?.url?.linkX || "#"}
                 className="w-10 h-10 bg-[#2b2b2b] rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                aria-label="X (Twitter)"
               >
-                <Image src={"/x.svg"} alt="linkedin" width={20} height={20} />
+                <Image src={"/x.svg"} alt="X logo" width={20} height={20} />
               </Link>
               <Link
                 href={footerData?.url?.linkinstagram || "#"}
                 className="w-10 h-10 bg-[#2b2b2b] rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                aria-label="Instagram"
               >
                 <i className="fab fa-instagram"></i>
               </Link>

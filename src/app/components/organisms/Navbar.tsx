@@ -17,8 +17,11 @@ export default function Navbar({ headerData }: { headerData?: any }) {
               <Image
                 src={headerData?.logo?.node?.mediaItemUrl || "/logo.png"}
                 alt="Logo Đại học Công Đoàn"
-                width={200}
-                height={200}
+                width={112}
+                height={112}
+                priority={true}
+                loading="eager"
+                className="w-28 h-28 object-contain"
               />
             </Link>
           </div>

@@ -50,20 +50,20 @@ export const SocialMediaContact = () => {
         return (
           <Image
             src="/x.svg"
-            alt="X"
-            className="h-6 w-6"
+            alt=""
             width={24}
             height={24}
+            aria-hidden="true"
           />
         );
       case "shopee":
         return (
           <Image
             src="/shopee.svg"
-            alt="Shopee"
-            className="h-6 w-6"
+            alt=""
             width={24}
             height={24}
+            aria-hidden="true"
           />
         );
       case "youtube":
@@ -101,7 +101,7 @@ export const SocialMediaContact = () => {
         </div>
       </div>
       <div className="flex flex-col space-y-2 relative">
-        {isLoading && <LoadingOverlay />}
+        
         {contactData?.content?.map((item: any, index: number) => (
           <Link
             key={index}

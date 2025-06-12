@@ -38,7 +38,7 @@ export const LayoutYHoc = ({ path }: { path?: string }) => {
       </div>
       <LayoutDefault>
         <div className="pb-10 md:px-3">
-          <LayoutBottom>
+          <LayoutBottom path={path}>
             <div>
               <ListPosts handleRouter={handleRouter} type={path} />
             </div>

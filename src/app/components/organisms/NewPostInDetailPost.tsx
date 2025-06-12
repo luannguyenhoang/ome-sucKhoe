@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import CardNewPostInDetailPost from "@/src/app/components/atoms/CardNewPostInDetailPost";
 import { LoadingNewPost } from "@/src/app/components/atoms/LoadingNewPost";
-import { ALLOWED_CATEGORIES } from "@/src/utils/category";
+import { ALL_CATEGORIES, ALLOWED_CATEGORIES } from "@/src/utils/category";
 
 export const NewPostInDetailPost = ({
   showTitle = true,
@@ -37,7 +37,7 @@ export const NewPostInDetailPost = ({
         if (data.posts?.length) {
           const filteredPosts = data.posts.filter((post) =>
             post.categories?.some((category: string) =>
-              ALLOWED_CATEGORIES.includes(category)
+              ALL_CATEGORIES.includes(category)
             )
           );
           

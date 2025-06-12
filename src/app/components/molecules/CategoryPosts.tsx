@@ -15,6 +15,7 @@ import CategoryTabs from "../atoms/CategoryTabs";
 import LoadingOverlay from "../atoms/LoadingOverlay";
 import { ALLOWED_CATEGORIES } from "@/src/utils/category";
 import { menus } from "@/src/router/router";
+import { LoadingListPost } from "../atoms/LoadingListPost";
 
 export const CategoryPosts = () => {
   const searchParams = useSearchParams();
@@ -33,57 +34,54 @@ export const CategoryPosts = () => {
   const [isPendingCategoryChange, setIsPendingCategoryChange] = useState(false);
 
   const getSubcategorySlugs = (category: string): string[] => {
-    // Find direct subcategories for any parent category
     for (const menu of menus) {
-      const menuPath = menu.path.startsWith('/') ? menu.path.substring(1) : menu.path;
-      
-      // Check if this is the current active category
+      const menuPath = menu.path.startsWith("/")
+        ? menu.path.substring(1)
+        : menu.path;
+
       if (menuPath === category) {
-        // Found a top-level parent category
         if (menu.childs) {
-          // Return all children slugs
-          return menu.childs.map(child => {
-            const pathParts = child.path.split('/');
+          return menu.childs.map((child) => {
+            const pathParts = child.path.split("/");
             return pathParts[pathParts.length - 1];
           });
         }
         return [];
       }
-      
-      // Check if the active category is a child of this menu item
+
       if (menu.childs) {
-        // Look through all children of this top-level menu
         for (const child of menu.childs) {
-          const childPath = child.path.startsWith('/') ? child.path.substring(1) : child.path;
-          const childSlug = childPath.split('/').pop() || '';
-          
-          // If this child matches our active category
+          const childPath = child.path.startsWith("/")
+            ? child.path.substring(1)
+            : child.path;
+          const childSlug = childPath.split("/").pop() || "";
+
           if (childSlug === category || childPath === category) {
-            // Return its subcategories if any
             if (child.childs) {
-              return child.childs.map(grandchild => {
-                const pathParts = grandchild.path.split('/');
+              return child.childs.map((grandchild) => {
+                const pathParts = grandchild.path.split("/");
                 return pathParts[pathParts.length - 1];
               });
             }
             return [];
           }
-          
-          // Handle nested y-hoc case
-          if (menu.path === '/y-hoc' && child.childs) {
+
+          if (menu.path === "/y-hoc" && child.childs) {
             for (const grandchild of child.childs) {
-              const grandchildPath = grandchild.path.startsWith('/') ? grandchild.path.substring(1) : grandchild.path;
-              const grandchildSlug = grandchildPath.split('/').pop() || '';
-              
+              const grandchildPath = grandchild.path.startsWith("/")
+                ? grandchild.path.substring(1)
+                : grandchild.path;
+              const grandchildSlug = grandchildPath.split("/").pop() || "";
+
               if (grandchildSlug === category) {
-                return []; // Most deeply nested, has no children
+                return [];
               }
             }
           }
         }
       }
     }
-    
+
     return [];
   };
 
@@ -91,7 +89,9 @@ export const CategoryPosts = () => {
     const getPosts = async () => {
       if (isLoading) {
         try {
-          let url = `/api/posts?&size=${first * 3 }&offset=${(page - 1) * first}`;
+          let url = `/api/posts?&size=${first * 3}&offset=${
+            (page - 1) * first
+          }`;
           url += `&category=${activeCategory}`;
           url += `&additionalCategory=pho-bien-nhat`;
           const res = await fetch(url, {
@@ -132,17 +132,17 @@ export const CategoryPosts = () => {
 
   useEffect(() => {
     if (posts.length > 0) {
-      const subcategorySlugs = getSubcategorySlugs(activeCategory);      
+      const subcategorySlugs = getSubcategorySlugs(activeCategory);
       if (subcategorySlugs.length === 0) {
         setFilteredPosts([]);
         return;
       }
-      const filtered = posts.filter(post => {
+      const filtered = posts.filter((post) => {
         const hasSubcategory = post.categories.some((category: string) => {
           if (category === activeCategory) {
             return false;
           }
-          const slug = category.split('/').pop() || category;
+          const slug = category.split("/").pop() || category;
           return subcategorySlugs.includes(slug);
         });
         return hasSubcategory;
@@ -182,7 +182,51 @@ export const CategoryPosts = () => {
         </div>
       ) : (
         <div className="relative">
-          {isLoading && <LoadingOverlay />}
+          {isLoading && (
+            <>
+              <div className="max-w-[900px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
+                <div className="relative rounded-md overflow-hidden aspect-[16/14] bg-gray-200 animate-pulse">
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="w-20 h-6 bg-gray-300 rounded-sm mb-2"></div>
+                    <div className="h-8 bg-gray-300 rounded w-3/4 mb-2"></div>
+                    <div className="h-4 bg-gray-300 rounded w-1/2 mt-3"></div>
+                  </div>
+                </div>
+                <div className="gap-3 flex flex-col justify-between">
+                  {[0, 1].map((index) => (
+                    <div
+                      key={index}
+                      className="flex space-x-4 items-center bg-white rounded-md"
+                    >
+                      <div className="relative flex-shrink-0 overflow-hidden rounded-md w-[180px] h-[180px] bg-gray-200 animate-pulse"></div>
+                      <div className="flex flex-col justify-start">
+                        <div className="w-40 h-[29px] bg-gray-300 rounded-sm mb-4"></div>
+                        <div className="h-5 bg-gray-300 rounded w-28 mb-1"></div>
+                        <div className="h-5 bg-gray-300 rounded w-3/4 mb-2"></div>
+                        <div className="h-4 bg-gray-300 rounded w-1/3 mt-2"></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="max-w-[900px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mt-6">
+                {[0, 1].map((index) => (
+                  <div
+                    key={index}
+                    className="flex space-x-4 items-center bg-white rounded-md"
+                  >
+                    <div className="relative flex-shrink-0 overflow-hidden rounded-md w-[180px] h-[180px] bg-gray-200 animate-pulse"></div>
+                    <div className="flex flex-col justify-start">
+                      <div className="w-40 h-[29px] bg-gray-300 rounded-sm mb-4"></div>
+                      <div className="h-5 bg-gray-300 rounded w-28 mb-1"></div>
+                      <div className="h-5 bg-gray-300 rounded w-3/4 mb-2"></div>
+                      <div className="h-4 bg-gray-300 rounded w-1/3 mt-2"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
           <div className="max-w-[900px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
             {filteredPosts.length > 0 && (
               <Link
@@ -217,9 +261,13 @@ export const CategoryPosts = () => {
                     </h2>
                   </div>
                   <div className="flex items-center space-x-4 mt-3 text-xs font text-white/80 uppercase">
-                    {filteredPosts[0]?.author && <span>by {filteredPosts[0].author}</span>}
+                    {filteredPosts[0]?.author && (
+                      <span>by {filteredPosts[0].author}</span>
+                    )}
                     <span className="flex items-center space-x-1">
-                      <span>{formatDate(filteredPosts[0]?.date || "Date")}</span>
+                      <span>
+                        {formatDate(filteredPosts[0]?.date || "Date")}
+                      </span>
                     </span>
                   </div>
                 </div>

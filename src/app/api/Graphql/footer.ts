@@ -17,9 +17,6 @@ export const GET_FOOTER = gql`
             linkX
             linkFacebook
           }
-          page {
-            name
-          }
         }
       }
     }

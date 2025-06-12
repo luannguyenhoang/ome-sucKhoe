@@ -9,19 +9,12 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-interface CategoryTabsProps {
-  selectedTabCategory: string;
-  isPendingCategoryChange: boolean;
-  isLoading: boolean;
-  onCategoryChange: (index: number) => void;
-}
-
 export default function CategoryTabs({
   selectedTabCategory,
   isPendingCategoryChange,
   isLoading,
   onCategoryChange,
-}: CategoryTabsProps) {
+}: any) {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
   const swiperContainerRef = useRef<HTMLDivElement>(null);
@@ -31,35 +24,46 @@ export default function CategoryTabs({
 
   const updateNavigation = useCallback(() => {
     if (!swiper) return;
-        const slideElements = Array.from(swiper.slides || []) as HTMLElement[];
-    const totalWidth = slideElements.reduce((sum, slide) => sum + slide.offsetWidth, 0);
-    const remainingWidth = totalWidth - Math.abs(swiper.translate) - (swiper.width || 0);
+    const slideElements = Array.from(swiper.slides || []) as HTMLElement[];
+    const totalWidth = slideElements.reduce(
+      (sum, slide) => sum + slide.offsetWidth,
+      0
+    );
+    const remainingWidth =
+      totalWidth - Math.abs(swiper.translate) - (swiper.width || 0);
     setIsBeginning(swiper.isBeginning);
     setIsEnd(swiper.isEnd || remainingWidth <= 30);
   }, [swiper]);
-  
-  const setupSwiper = useCallback((swiperInstance: SwiperCore) => {
-    setSwiper(swiperInstance);
-    if (prevRef.current && nextRef.current && swiperInstance.params.navigation) {
-      (swiperInstance.params.navigation as any).prevEl = prevRef.current;
-      (swiperInstance.params.navigation as any).nextEl = nextRef.current;
-      swiperInstance.navigation.init();
-      swiperInstance.navigation.update();
-    }
-    setIsBeginning(true);
-    setTimeout(updateNavigation, 50);
-  }, [updateNavigation]);
+
+  const setupSwiper = useCallback(
+    (swiperInstance: SwiperCore) => {
+      setSwiper(swiperInstance);
+      if (
+        prevRef.current &&
+        nextRef.current &&
+        swiperInstance.params.navigation
+      ) {
+        (swiperInstance.params.navigation as any).prevEl = prevRef.current;
+        (swiperInstance.params.navigation as any).nextEl = nextRef.current;
+        swiperInstance.navigation.init();
+        swiperInstance.navigation.update();
+      }
+      setIsBeginning(true);
+      setTimeout(updateNavigation, 50);
+    },
+    [updateNavigation]
+  );
 
   useEffect(() => {
     if (!swiper) return;
-    
+
     updateNavigation();
     const timer = setTimeout(() => {
       swiper?.updateSize();
       swiper?.updateSlides();
       updateNavigation();
     }, 50);
-    
+
     const handleResize = () => {
       swiper.updateSize();
       swiper.updateSlides();
@@ -73,8 +77,14 @@ export default function CategoryTabs({
     };
   }, [swiper, updateNavigation]);
 
-  const handlePrevClick = useCallback(() => swiper && !isBeginning && swiper.slidePrev(), [swiper, isBeginning]);
-  const handleNextClick = useCallback(() => swiper && !isEnd && swiper.slideNext(), [swiper, isEnd]);
+  const handlePrevClick = useCallback(
+    () => swiper && !isBeginning && swiper.slidePrev(),
+    [swiper, isBeginning]
+  );
+  const handleNextClick = useCallback(
+    () => swiper && !isEnd && swiper.slideNext(),
+    [swiper, isEnd]
+  );
   const swiperEvents = {
     onBeforeInit: setupSwiper,
     onInit: setupSwiper,
@@ -96,7 +106,9 @@ export default function CategoryTabs({
     <div className="max-w-[900px] mx-auto overflow-hidden">
       <div className="lg:flex items-center justify-between">
         <div className="flex items-center lg:pb-0 pb-5">
-          <h2 className="text-3xl font-bold text-black mr-2 whitespace-nowrap">Phổ biến nhất</h2>
+          <h2 className="text-3xl font-bold text-black mr-2 whitespace-nowrap">
+            Phổ biến nhất
+          </h2>
           <div className="h-2 w-2 rounded-full bg-[#2962ff] mr-1"></div>
           <div className="flex-1 gap-2 lg:mr-2">
             <div className="flex-1 min-w-8 h-[1px] mb-1 bg-gray-200"></div>
@@ -104,18 +116,25 @@ export default function CategoryTabs({
           </div>
         </div>
 
-        <div ref={swiperContainerRef} className="border border-gray-200 rounded-sm overflow-hidden lg:max-w-[70%] w-full relative">
+        <div
+          ref={swiperContainerRef}
+          className="border border-gray-200 rounded-sm overflow-hidden lg:max-w-[70%] w-full relative"
+        >
           <div
             ref={prevRef}
             onClick={handlePrevClick}
-            className={`absolute top-1/2 text-white -translate-y-1/2 left-1 z-10 flex items-center justify-center bg-[#254e80] rounded-full border border-gray-200 w-6 h-6 cursor-pointer ${isBeginning ? "hidden" : ""}`}
+            className={`absolute top-1/2 text-white -translate-y-1/2 left-1 z-10 flex items-center justify-center bg-[#254e80] rounded-full border border-gray-200 w-6 h-6 cursor-pointer transition-all duration-300 opacity-40 hover:opacity-100 ${
+              isBeginning ? "hidden" : ""
+            }`}
           >
             <PreviousIcon />
           </div>
           <div
             ref={nextRef}
             onClick={handleNextClick}
-            className={`absolute top-1/2 text-white -translate-y-1/2 right-1 z-10 flex items-center justify-center bg-[#254e80] rounded-full border border-gray-200 w-6 h-6 cursor-pointer ${isEnd ? "hidden" : ""}`}
+            className={`absolute top-1/2 text-white -translate-y-1/2 right-1 z-10 flex items-center justify-center bg-[#254e80] rounded-full border border-gray-200 w-6 h-6 cursor-pointer transition-all duration-300 opacity-40 hover:opacity-100 ${
+              isEnd ? "hidden" : ""
+            }`}
           >
             <NextIcon />
           </div>
@@ -132,10 +151,13 @@ export default function CategoryTabs({
           >
             {ALLOWED_CATEGORIES.map((slug, index) => {
               const isActive = selectedTabCategory === slug;
-              const isDisabled = isLoading && isPendingCategoryChange && !isActive;
+              const isDisabled =
+                isLoading && isPendingCategoryChange && !isActive;
               const buttonClass = isActive
                 ? "bg-[#2962ff] text-white shadow-md relative"
-                : `text-gray-700 hover:bg-gray-100 ${isPendingCategoryChange ? "opacity-60" : ""}`;
+                : `text-gray-700 hover:bg-gray-100 ${
+                    isPendingCategoryChange ? "opacity-60" : ""
+                  }`;
               return (
                 <SwiperSlide key={slug} className="!w-auto">
                   <button

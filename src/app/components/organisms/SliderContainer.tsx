@@ -25,6 +25,21 @@ export default function SliderContainer() {
     totalSlides: posts.length,
   });
 
+  // Preload the first image to improve LCP
+  const preloadFirstImage = () => {
+    if (posts.length > 0 && posts[0].featured_image) {
+      return (
+        <link
+          rel="preload"
+          as="image"
+          href={posts[0].featured_image}
+          key="preload-first-slide"
+        />
+      );
+    }
+    return null;
+  };
+
   if (loading) {
     return (
       <div className="w-full h-[720px] lg:bg-black/40 animate-pulse flex items-center justify-center" />
@@ -33,6 +48,7 @@ export default function SliderContainer() {
 
   return (
     <div className="relative w-full">
+      {preloadFirstImage()}
       <SliderContent
         posts={posts}
         currentSlide={currentSlide}

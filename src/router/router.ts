@@ -158,7 +158,7 @@ export const menus: TMenus = [
         title: "Hô hấp",
       },
       {
-        path: "/phuc-hoi-chuc-nang/ngon-ngu-giao-tiep",
+        path: "/phuc-hoi-chuc-nang/ngon-ngu-va-giao-tiep",
         title: "Ngôn ngữ và giao tiếp",
       },
       {

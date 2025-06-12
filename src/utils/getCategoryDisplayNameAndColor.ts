@@ -47,7 +47,7 @@ export const getCategoryDisplayName = (slug?: string): string => {
     // Phục hồi chức năng children
     "co-xuong-khop": "Cơ xương khớp",
     "ho-hap": "Hô hấp",
-    "ngon-ngu-giao-tiep": "Ngôn ngữ và giao tiếp",
+    "ngon-ngu-va-giao-tiep": "Ngôn ngữ và giao tiếp",
     "than-kinh": "Thần kinh",
 
     "su-kien-sap-toi": "Sự kiện sắp tới",
