@@ -29,7 +29,7 @@ export const CardBlogVert = ({
       <div className="w-full">
         <div className="rounded-md overflow-hidden mb-3">
           <div className="overflow-hidden">
-            <Link href={path ?? "#"}>
+            <Link href={`/${path}`}>
               <Image
                 placeholder="blur"
                 blurDataURL={image || `/no-image.jpeg`}
@@ -79,7 +79,7 @@ export const CardBlogVert = ({
           dangerouslySetInnerHTML={{ __html: desc }}
         />
 
-        <ButtonAnimation text="Xem thêm" link={path ?? "#"} />
+        <ButtonAnimation text="Xem thêm" link={`/${path}`} />
       </div>
     </div>
   );

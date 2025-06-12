@@ -40,7 +40,7 @@ export const CardBlog = ({
   return (
     <Link
       className="relative flex flex-col overflow-hidden variant-outline rounded-sm bg-gray-100 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-[1.03] h-[420px]"
-      href={path ?? "#"}
+      href={`/${path}`}
     >
       <div className="w-full h-[200px]">
         <div className="rounded-t-lg overflow-hidden h-full">

@@ -39,7 +39,7 @@ export default function CardPostCategory({
     <AnimateOnScroll>
       <Link
         className="relative bg-white flex space-x-4 items-center group cursor-pointer transition-all duration-300 rounded-md "
-        href={postPath}
+        href={`/${postPath}`}
       >
         <div
           className="relative flex-shrink-0 overflow-hidden rounded-md"

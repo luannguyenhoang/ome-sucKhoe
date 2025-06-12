@@ -16,7 +16,7 @@ export default function CardNewPostInDetailPost({
   
     
     <Link
-      href={`${post.slug}`}
+      href={`/${post.slug}`}
       className="flex items-center gap-4 cursor-pointer  relative py-4 group"
     >
       <div className="relative">
