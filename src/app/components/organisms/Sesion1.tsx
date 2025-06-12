@@ -6,6 +6,7 @@ import NextIcon from "@/src/icons/NextIcon";
 import PreviousIcon from "@/src/icons/PreviousIcon";
 import { getData } from "@/src/lib/getData";
 import { Topic } from "@/src/types/Topic";
+import { ALLOWED_CATEGORIES } from "@/src/utils/category";
 import { toSlug } from "@/src/utils/toSlug";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -40,9 +41,13 @@ export const Sesion1 = () => {
               })
             );
 
+          const filteredCategoryData = categoryData.filter((category: any) =>
+            ALLOWED_CATEGORIES.includes(category.slug)
+          );
+
           const counts: { [key: string]: number } = {};
           await Promise.all(
-            categoryData.map(async (category: any) => {
+            filteredCategoryData.map(async (category: any) => {
               try {
                 const countRes = await fetch(
                   `/api/posts/count?category=${category.slug}`
@@ -63,7 +68,7 @@ export const Sesion1 = () => {
 
           setCategoryCounts(counts);
           setTopics(
-            categoryData.map((category: any) => ({
+            filteredCategoryData.map((category: any) => ({
               ...category,
               countPosts: counts[category.title] || 0,
             }))
@@ -195,25 +200,29 @@ export const Sesion1 = () => {
             className="flex transition-transform duration-300 ease-in-out w-full"
             style={getTransformStyle()}
           >
-            {isLoading ? (
-              Array(itemsPerPage).fill(0).map((_, index) => (
-                <div
-                  key={`skeleton-${index}`}
-                  className={`relative rounded-md overflow-hidden ${
-                    screenSize === "sm" ? "w-full" : "w-56 mr-4"
-                  } h-64 flex-shrink-0 bg-gray-200 animate-pulse`}
-                >
-                  <div className="absolute bottom-3 w-full flex flex-col items-center justify-center">
-                    <div className="h-6 bg-gray-300 rounded w-28 mb-2"></div>
-                    <div className="h-4 bg-gray-300 rounded w-10"></div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              topics.map((topic) => (
-                <CardTopic key={topic.id} topic={topic} screenSize={screenSize} />
-              ))
-            )}
+            {isLoading
+              ? Array(itemsPerPage)
+                  .fill(0)
+                  .map((_, index) => (
+                    <div
+                      key={`skeleton-${index}`}
+                      className={`relative rounded-md overflow-hidden ${
+                        screenSize === "sm" ? "w-full" : "w-56 mr-4"
+                      } h-64 flex-shrink-0 bg-gray-200 animate-pulse`}
+                    >
+                      <div className="absolute bottom-3 w-full flex flex-col items-center justify-center">
+                        <div className="h-6 bg-gray-300 rounded w-28 mb-2"></div>
+                        <div className="h-4 bg-gray-300 rounded w-10"></div>
+                      </div>
+                    </div>
+                  ))
+              : topics.map((topic) => (
+                  <CardTopic
+                    key={topic.id}
+                    topic={topic}
+                    screenSize={screenSize}
+                  />
+                ))}
           </div>
         </div>
       </div>
