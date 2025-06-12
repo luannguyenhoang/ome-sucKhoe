@@ -52,8 +52,11 @@ export const Category = ({ path }: { path?: string }) => {
 
     for (const menu of menus) {
       if (!menu.childs) continue;
-
       for (const child of menu.childs) {
+        const childPathSegment = child.path.split("/").pop() || "";
+        if (normalizedPath.includes(childPathSegment)) {
+          return menu.path.replace("/", "");
+        }
         if (!child.childs) continue;
 
         for (const grandChild of child.childs) {
