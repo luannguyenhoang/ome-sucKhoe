@@ -1,11 +1,10 @@
-import { toSlug } from "@/src/utils/toSlug";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function CardCategory({ category }: { category: any }) {
   return (
     <Link
-      href={`/${category.link}`}
+      href={`${category.link}`}
       className="relative block h-[80px] rounded-md overflow-hidden group"
     >
       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all z-10"></div>

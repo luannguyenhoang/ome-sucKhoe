@@ -63,7 +63,7 @@ export const CardBlogVert = ({
         <div className="relative overflow-hidden group/title w-fit">
           <h3 className="text-2xl text-black font-bold w-fit">
             <Link
-              href={path ?? "#"}
+              href={`/${path}`}
               className="relative inline bg-[linear-gradient(transparent_calc(100%_-_2px),#000000FF_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover/title:bg-[length:100%_100%] transition-all duration-1000"
               dangerouslySetInnerHTML={{ __html: xss(title) }}
             />
