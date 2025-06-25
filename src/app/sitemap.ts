@@ -3,7 +3,7 @@ import { menus, TMenus } from "@/src/router/router";
 import type { MetadataRoute } from "next";
 import { GET_SITEMAP } from "./api/Graphql/posts";
 
-const API_URL = process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000";
+const API_URL = process.env.NEXT_PUBLIC_DOMAIN || "https://ome.edu.vn/suc-khoe";
 
 const getAllPaths = (menus: TMenus): MetadataRoute.Sitemap => {
   const paths: MetadataRoute.Sitemap = [];

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/private"
     },
-    sitemap: `https://dhthainguyen.edu.vn/sitemap.xml`
+    sitemap: `https://ome.edu.vn/suc-khoe/sitemap.xml`
   };
 }
