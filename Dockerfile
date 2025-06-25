@@ -20,7 +20,7 @@ WORKDIR /app
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
-ENV NEXT_PUBLIC_API_GRAPHQL http://10.10.51.16:8090/graphql
+ENV NEXT_PUBLIC_API_GRAPHQL https://adminsuckhoe.ome.edu.vn/graphql
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -33,8 +33,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 
 USER nextjs
 
-EXPOSE 3000
+EXPOSE 3002
 
-ENV PORT 3000
+ENV PORT 3002
 
 CMD ["npm", "start"]

@@ -3,51 +3,51 @@ export const replaceSeoRM = (input?: string) => {
 
   return input
     .replace(
-      `link rel="canonical" href="http://10.10.51.16:8002`,
-      `link rel="canonical" href="http://10.10.51.16:3002`
+      `link rel="canonical" href="https://adminsuckhoe.ome.edu.vn`,
+      `link rel="canonical" href="https://ome.edu.vn/suc-khoe`
     )
     .replace(
-      `meta property="og:url" content="http://10.10.51.16:8002`,
-      `meta property="og:url" content="http://10.10.51.16:3002`
+      `meta property="og:url" content="https://adminsuckhoe.ome.edu.vn`,
+      `meta property="og:url" content="https://ome.edu.vn/suc-khoe`
     )
     .replace(
-      `"@id":"http://10.10.51.16:8002/#organization"`,
-      `"@id":"http://10.10.51.16:3002/#organization"`
+      `"@id":"https://adminsuckhoe.ome.edu.vn/#organization"`,
+      `"@id":"https://ome.edu.vn/suc-khoe/#organization"`
     )
     .replace(
-      `http://10.10.51.16:8002/#logo`,
-      `http://10.10.51.16:3002/#logo`
+      `https://adminsuckhoe.ome.edu.vn/#logo`,
+      `https://ome.edu.vn/suc-khoe/#logo`
     )
     .replace(
-      `http://10.10.51.16:8002/#website`,
-      `http://10.10.51.16:3002/#website`
+      `https://adminsuckhoe.ome.edu.vn/#website`,
+      `https://ome.edu.vn/suc-khoe/#website`
     )
     .replace(
-      `http://10.10.51.16:8002/#webpage`,
-      `http://10.10.51.16:3002/#webpage`
+      `https://adminsuckhoe.ome.edu.vn/#webpage`,
+      `https://ome.edu.vn/suc-khoe/#webpage`
     )
     .replace(
-      `"url":"http://10.10.51.16:8002"`,
-      `"url":"http://10.10.51.16:3002"`
+      `"url":"https://adminsuckhoe.ome.edu.vn"`,
+      `"url":"https://ome.edu.vn/suc-khoe"`
     )
     .replace(
-      `"@type":"WebPage","@id":"http://10.10.51.16:8002`,
-      `"@type":"WebPage","@id":"http://10.10.51.16:3002`
+      `"@type":"WebPage","@id":"https://adminsuckhoe.ome.edu.vn`,
+      `"@type":"WebPage","@id":"https://ome.edu.vn/suc-khoe`
     )
     .replace(
-      `#webpage","url":"http://10.10.51.16:8002`,
-      `#webpage","url":"http://10.10.51.16:3002`
+      `#webpage","url":"https://adminsuckhoe.ome.edu.vn`,
+      `#webpage","url":"https://ome.edu.vn/suc-khoe`
     )
     .replace(
-      `"mainEntityOfPage":{"@id":"http://10.10.51.16:8002`,
-      `"mainEntityOfPage":{"@id":"http://10.10.51.16:3002/`
+      `"mainEntityOfPage":{"@id":"https://adminsuckhoe.ome.edu.vn`,
+      `"mainEntityOfPage":{"@id":"https://ome.edu.vn/suc-khoe/`
     )
     .replace(
-      `"worksFor":{"@id":"http://10.10.51.16:8002/#organization`,
-      `"worksFor":{"@id":"http://10.10.51.16:3002/#organization`
+      `"worksFor":{"@id":"https://adminsuckhoe.ome.edu.vn/#organization`,
+      `"worksFor":{"@id":"https://ome.edu.vn/suc-khoe/#organization`
     )
     .replace(
-      `"sameAs":["http://10.10.51.16:8002"]`,
-      `"sameAs":["http://10.10.51.16:3002"]`
+      `"sameAs":["https://adminsuckhoe.ome.edu.vn"]`,
+      `"sameAs":["https://ome.edu.vn/suc-khoe"]`
     );
 };

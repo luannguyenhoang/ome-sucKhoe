@@ -3,7 +3,7 @@ import { registerApolloClient } from "@apollo/experimental-nextjs-app-support";
 import { setContext } from "@apollo/client/link/context";
 
 const API_GRAPHQL =
-  process.env.NEXT_PUBLIC_API_GRAPHQL || "http://10.10.51.16:8009/graphql";
+  process.env.NEXT_PUBLIC_API_GRAPHQL || "https://adminsuckhoe.ome.edu.vn/graphql";
 const API_TOKEN = process.env.TOKEN || "";
 
 const httpLink = new HttpLink({

@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "adminskome.devlab.info.vn",
+        hostname: "adminsuckhoe.ome.edu.vn",
         pathname: "/**",
       },
     ],
