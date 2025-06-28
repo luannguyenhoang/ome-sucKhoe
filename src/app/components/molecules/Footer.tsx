@@ -51,7 +51,7 @@ export const Footer = () => {
           <div className="space-y-6 col-span-3">
             <Link href={"/"} className="flex w-full justify-center">
               <Image
-                src={footerData?.logo?.node?.mediaItemUrl || "/logo.png"}
+                src={footerData?.logo?.node?.mediaItemUrl || "/suc-khoe/logo.png"}
                 alt="logo"
                 width={110}
                 height={110}
@@ -74,7 +74,7 @@ export const Footer = () => {
                 className="w-10 h-10 bg-[#2b2b2b] rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
                 aria-label="X (Twitter)"
               >
-                <Image src={"/x.svg"} alt="X logo" width={20} height={20} />
+                <Image src={"/suc-khoe/x.svg"} alt="X logo" width={20} height={20} />
               </Link>
               <Link
                 href={footerData?.url?.linkinstagram || "#"}

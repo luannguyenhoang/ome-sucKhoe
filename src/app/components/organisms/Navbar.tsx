@@ -15,7 +15,7 @@ export default function Navbar({ headerData }: { headerData?: any }) {
           <div className="flex items-center py-1 relative w-28 h-28">
             <Link href="/" className="">
               <Image
-                src={headerData?.logo?.node?.mediaItemUrl || "/logo.png"}
+                src={headerData?.logo?.node?.mediaItemUrl || "/suc-khoe/logo.png"}
                 alt="Logo Đại học Công Đoàn"
                 width={112}
                 height={112}

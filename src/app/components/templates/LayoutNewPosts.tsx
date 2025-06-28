@@ -29,7 +29,7 @@ export const LayoutNewPosts = ({
 
       try {
         const res = await fetch(
-          `/api/posts?size=3&offset=0&category=${categorySlug}`,
+          `/suc-khoe/api/posts?size=3&offset=0&category=${categorySlug}`,
           {
             next: { revalidate: 1 },
           }
@@ -125,7 +125,7 @@ export const LayoutNewPosts = ({
                     <div className="w-full md:w-2/5 lg:w-2/5">
                       <div className="relative h-60 rounded overflow-hidden">
                         <Image
-                          src={post.featured_image || "/no-image.jpeg"}
+                          src={post.featured_image || "/suc-khoe/no-image.jpeg"}
                           alt={post.title}
                           fill
                           className="object-cover"

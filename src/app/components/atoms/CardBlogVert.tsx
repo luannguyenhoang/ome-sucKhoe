@@ -32,12 +32,12 @@ export const CardBlogVert = ({
             <Link href={`/${path}`}>
               <Image
                 placeholder="blur"
-                blurDataURL={image || `/no-image.jpeg`}
+                blurDataURL={image || `/suc-khoe/no-image.jpeg`}
                 loading="lazy"
                 width={720}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 height={200}
-                src={image || `/no-image.jpeg`}
+                src={image || `/suc-khoe/no-image.jpeg`}
                 alt={title}
                 className="transition-transform duration-500 group-hover:scale-105"
                 style={{

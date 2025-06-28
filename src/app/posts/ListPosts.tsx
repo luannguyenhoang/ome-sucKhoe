@@ -120,7 +120,7 @@ export const ListPosts = ({
       setIsLoading(true);
 
       try {
-        let url = `/api/posts?&size=${first}&offset=${(page - 1) * first}`;
+        let url = `/suc-khoe/api/posts?&size=${first}&offset=${(page - 1) * first}`;
 
         if (searchTerm) {
           url += `&search=${encodeURIComponent(searchTerm)}`;

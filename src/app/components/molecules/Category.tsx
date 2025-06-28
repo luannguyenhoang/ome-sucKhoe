@@ -99,7 +99,7 @@ export const Category = ({ path }: { path?: string }) => {
 
   const fetchCategoryCount = useCallback(async (slug: string): Promise<number> => {
     try {
-      const countRes = await fetch(`/api/posts/count?category=${slug}`);
+      const countRes = await fetch(`/suc-khoe/api/posts/count?category=${slug}`);
       const countData = await countRes.json();
       return countData.total || 0;
     } catch (error) {

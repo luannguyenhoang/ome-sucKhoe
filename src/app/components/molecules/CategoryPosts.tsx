@@ -89,7 +89,7 @@ export const CategoryPosts = () => {
     const getPosts = async () => {
       if (isLoading) {
         try {
-          let url = `/api/posts?&size=${first * 3}&offset=${
+          let url = `/suc-khoe/api/posts?&size=${first * 3}&offset=${
             (page - 1) * first
           }`;
           url += `&category=${activeCategory}`;
@@ -234,7 +234,7 @@ export const CategoryPosts = () => {
                 className="relative rounded-md overflow-hidden aspect-[16/14] group"
               >
                 <Image
-                  src={filteredPosts[0]?.featured_image || "/no-image.jpeg"}
+                  src={filteredPosts[0]?.featured_image || "/suc-khoe/no-image.jpeg"}
                   alt="Featured post"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 900px"

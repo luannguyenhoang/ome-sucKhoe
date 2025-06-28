@@ -17,7 +17,7 @@ export const MostViewedPost = () => {
       setIsLoading(true);
 
       try {
-        const res = await fetch(`/api/posts?size=6&offset=0`, {
+        const res = await fetch(`/suc-khoe/api/posts?size=6&offset=0`, {
           next: { revalidate: 1 },
         });
 
@@ -98,7 +98,7 @@ export const MostViewedPost = () => {
                   src={
                     posts[0]?.featured_image ||
                     posts[0]?.image ||
-                    "/no-image.jpeg"
+                    "/suc-khoe/no-image.jpeg"
                   }
                   alt={posts[0]?.title || "Banner background"}
                   fill

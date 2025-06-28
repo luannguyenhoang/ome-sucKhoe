@@ -22,7 +22,7 @@ export default function CardTopic({ topic, screenSize }: CardTopicProps) {
       >
         <div className="relative w-full h-full">
           <Image
-            src={topic.imageUrl || "/logo.png"}
+            src={topic.imageUrl || "/suc-khoe/logo.png"}
             alt={topic.alt}
             width={192}
             height={192}

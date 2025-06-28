@@ -31,7 +31,7 @@ export default function Sesion3() {
         const results = await Promise.all(
           categories.map(async (cat) => {
             try {
-              const res = await fetch(`/api/posts?category=${cat}&size=1`, {
+              const res = await fetch(`/suc-khoe/api/posts?category=${cat}&size=1`, {
                 cache: "no-store",
               });
 
@@ -41,7 +41,7 @@ export default function Sesion3() {
                 ? {
                     ...post,
                     category: cat,
-                    featured_image: post.featured_image || "/no-image.jpeg",
+                    featured_image: post.featured_image || "/suc-khoe/no-image.jpeg",
                   }
                 : null;
             } catch {
@@ -105,7 +105,7 @@ export default function Sesion3() {
                     ) : (
                       <>
                         <Image
-                          src={post.featured_image || "/no-image.jpeg"}
+                          src={post.featured_image || "/suc-khoe/no-image.jpeg"}
                           alt={post.title}
                           fill
                           className="object-cover transition-transform duration-300 group-hover:scale-105"

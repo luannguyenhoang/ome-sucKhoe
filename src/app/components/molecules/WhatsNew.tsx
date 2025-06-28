@@ -18,7 +18,7 @@ export const WhatsNew = () => {
       setIsLoading(true);
 
       try {
-        const res = await fetch(`/api/posts?size=10&offset=0`, {
+        const res = await fetch(`/suc-khoe/api/posts?size=10&offset=0`, {
           next: { revalidate: 1 },
         });
 

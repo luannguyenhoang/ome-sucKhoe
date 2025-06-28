@@ -29,7 +29,7 @@ export default function CardNewPostInDetailPost({
         )}
         <div className="relative w-24 h-24 rounded-full overflow-hidden">
           <Image
-            src={post.featured_image || "/no-image.jpeg"}
+            src={post.featured_image || "/suc-khoe/no-image.jpeg"}
             alt={post.title || "No image"}
             fill
             className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"

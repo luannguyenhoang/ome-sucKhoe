@@ -55,7 +55,7 @@ export const useSliderData = () => {
       category: category,
       date: new Date(Date.now() - index * 86400000).toISOString(),
       views: 1000 + Math.floor(Math.random() * 2000),
-      featured_image: "/no-image.jpeg",
+      featured_image: "/suc-khoe/no-image.jpeg",
       author: "ADMIN",
     }));
   }, []);
@@ -94,7 +94,7 @@ export const useSliderData = () => {
 
       try {
         const postsPromises = ALLOWED_CATEGORIES.map((category) =>
-          fetch(`/api/posts?category=${category}&size=1`, {
+          fetch(`/suc-khoe/api/posts?category=${category}&size=1`, {
             next: { revalidate: 0 },
             cache: "no-store",
           })
@@ -109,7 +109,7 @@ export const useSliderData = () => {
                 return {
                   ...post,
                   category: category,
-                  featured_image: post.featured_image || "/no-image.jpeg",
+                  featured_image: post.featured_image || "/suc-khoe/no-image.jpeg",
                 };
               }
               return null;

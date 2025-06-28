@@ -47,7 +47,7 @@ export const EventSesion4 = () => {
         {isLoading && <LoadingOverlay />}
         <div className="absolute inset-0">
           <Image
-            src={eventData?.banner?.node?.mediaItemUrl || "/no-image.jpeg"}
+            src={eventData?.banner?.node?.mediaItemUrl || "/suc-khoe/no-image.jpeg"}
             alt="Banner background"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

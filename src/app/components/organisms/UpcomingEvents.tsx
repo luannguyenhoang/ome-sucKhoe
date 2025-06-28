@@ -21,7 +21,7 @@ export const UpcomingEvents = ({
 
       try {
         const res = await fetch(
-          `/api/posts?size=${count}&offset=0&category=su-kien-sap-toi`,
+          `/suc-khoe/api/posts?size=${count}&offset=0&category=su-kien-sap-toi`,
           {
             next: { revalidate: 1 },
           }

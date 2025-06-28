@@ -54,7 +54,7 @@ export default function TopCategoryPosts() {
         await Promise.all(
           categoryConfigs.map(async (category) => {
             const res = await fetch(
-              `/api/posts?size=3&offset=0&category=${category.slug}`,
+              `/suc-khoe/api/posts?size=3&offset=0&category=${category.slug}`,
               {
                 next: { revalidate: 1 },
               }
@@ -161,7 +161,7 @@ export default function TopCategoryPosts() {
                       <div className="mb-6 bg-white overflow-hidden border-b border-gray-200">
                         <div className="relative h-56 overflow-hidden rounded-md">
                           <Image
-                            src={posts[0]?.featured_image || "/no-image.jpeg"}
+                            src={posts[0]?.featured_image || "/suc-khoe/no-image.jpeg"}
                             alt={posts[0]?.title || ""}
                             fill
                             className="object-cover transition-transform hover:scale-105 rounded-md duration-500"

@@ -22,7 +22,7 @@ const ListCategorySlider = forwardRef<HTMLButtonElement, {
     >
       <div className="relative w-[60px] h-[60px] lg:w-[80px] lg:h-[80px] flex-shrink-0 transition-transform">
         <Image
-          src={post.featured_image || post.image || "/no-image.jpeg"}
+          src={post.featured_image || post.image || "/suc-khoe/no-image.jpeg"}
           alt={post.title || "Post thumbnail"}
           fill
           className={`object-cover rounded-full ${

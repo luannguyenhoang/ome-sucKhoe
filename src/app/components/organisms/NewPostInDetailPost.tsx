@@ -24,7 +24,7 @@ export const NewPostInDetailPost = ({
       setIsLoading(true);
 
       try {
-        const res = await fetch(`/api/posts?size=${count * 2}&offset=0`, {
+        const res = await fetch(`/suc-khoe/api/posts?size=${count * 2}&offset=0`, {
           next: { revalidate: 1 },
         });
 
@@ -51,7 +51,7 @@ export const NewPostInDetailPost = ({
               if (category && !counts[category]) {
                 try {
                   const countRes = await fetch(
-                    `/api/posts/count?category=${category}`
+                    `/suc-khoe/api/posts/count?category=${category}`
                   );
                   if (countRes.ok) {
                     const countData = await countRes.json();

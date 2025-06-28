@@ -15,7 +15,7 @@ export default function CardNewPost({ post }: { post: any }) {
           className="block w-[120px] h-[full] relative rounded overflow-hidden flex-shrink-0"
         >
           <Image
-            src={post.featured_image || "/blog.jpeg"}
+            src={post.featured_image || "/suc-khoe/blog.jpeg"}
             alt={post.title}
             fill
             sizes="(max-width: 640px) 120px, 120px"

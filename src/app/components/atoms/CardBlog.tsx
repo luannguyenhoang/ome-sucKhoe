@@ -47,7 +47,7 @@ export const CardBlog = ({
           <Image
             width={720}
             height={200}
-            src={image || `/blog.jpeg`}
+            src={image || `/suc-khoe/blog.jpeg`}
             alt={title}
             style={{
               width: "100%",

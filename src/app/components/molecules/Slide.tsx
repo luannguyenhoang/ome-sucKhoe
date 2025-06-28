@@ -17,7 +17,7 @@ export default function Slide({ post }: SlideProps) {
     <div className="relative w-full h-[720px] overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src={post.featured_image || "/no-image.jpeg"}
+          src={post.featured_image || "/suc-khoe/no-image.jpeg"}
           alt={post.title || "banner"}
           fill
           sizes="100vw"

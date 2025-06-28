@@ -49,7 +49,7 @@ export const SocialMediaContact = () => {
       case "x":
         return (
           <Image
-            src="/x.svg"
+            src="/suc-khoe/x.svg"
             alt=""
             width={24}
             height={24}
@@ -59,7 +59,7 @@ export const SocialMediaContact = () => {
       case "shopee":
         return (
           <Image
-            src="/shopee.svg"
+            src="/suc-khoe/shopee.svg"
             alt=""
             width={24}
             height={24}

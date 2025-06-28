@@ -50,7 +50,7 @@ export const Sesion1 = () => {
             filteredCategoryData.map(async (category: any) => {
               try {
                 const countRes = await fetch(
-                  `/api/posts/count?category=${category.slug}`
+                  `/suc-khoe/api/posts/count?category=${category.slug}`
                 );
                 if (countRes.ok) {
                   const countData = await countRes.json();
@@ -149,7 +149,7 @@ export const Sesion1 = () => {
     <div className="max-w-7xl lg:mt-[-100px] lg:pt-0 mt-16 bg-white border border-gray-100 rounded-2xl shadow-2xl mx-2 lg:px-0 relative">
       <div className="absolute bottom-[-40px] left-[-50px] z-[-1]  lg:block hidden">
         <Image
-          src={"/element.png"}
+          src={"/suc-khoe/element.png"}
           alt="decorative element"
           width={110}
           height={120}
@@ -157,7 +157,7 @@ export const Sesion1 = () => {
       </div>
       <div className="absolute bottom-[-40px] right-[-50px] z-[-1] lg:block hidden">
         <Image
-          src={"/elemen2.png"}
+          src={"/suc-khoe/elemen2.png"}
           alt="decorative element"
           width={70}
           height={70}

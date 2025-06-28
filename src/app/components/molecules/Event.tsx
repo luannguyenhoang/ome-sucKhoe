@@ -77,7 +77,7 @@ export const Event = () => {
           <>
             <div className="absolute inset-0">
               <Image
-                src={eventData?.banner?.node?.mediaItemUrl || "/no-image.jpeg"}
+                src={eventData?.banner?.node?.mediaItemUrl || "/suc-khoe/no-image.jpeg"}
                 alt="Banner background"
                 fill
                 sizes="(max-width: 768px) 100vw, 350px"

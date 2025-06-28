@@ -30,7 +30,7 @@ export default function CardPostCategory({
   date?: string;
 }) {
   const postTitle = title || post?.title || "";
-  const postImage = image || post?.image || "/logo.png";
+  const postImage = image || post?.image || "/suc-khoe/logo.png";
   const postPath = path || "#";
   const postCategory = category || post?.category || "";
   const postDate = date || post?.date || "";
@@ -48,7 +48,7 @@ export default function CardPostCategory({
           <Image
             loading="lazy"
             placeholder="blur"
-            blurDataURL={postImage || `/logo.png`}
+            blurDataURL={postImage || `/suc-khoe/logo.png`}
             src={postImage}
             alt={postTitle}
             fill
