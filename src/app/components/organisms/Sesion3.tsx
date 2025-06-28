@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 export default function Sesion3() {
-  const [posts, setPosts] = useState<any[]>(defaultPosts);
+  const [posts, setPosts] = useState<any[]>();
   const [loading, setLoading] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const [navState, setNavState] = useState({ start: true, end: false });
@@ -34,7 +34,6 @@ export default function Sesion3() {
               const res = await fetch(`/api/posts?category=${cat}&size=1`, {
                 cache: "no-store",
               });
-              if (!res.ok) return defaultPosts.find((p) => p.category === cat);
 
               const { posts } = await res.json();
               const post = posts?.[0];
@@ -44,9 +43,9 @@ export default function Sesion3() {
                     category: cat,
                     featured_image: post.featured_image || "/no-image.jpeg",
                   }
-                : defaultPosts.find((p) => p.category === cat);
+                : null;
             } catch {
-              return defaultPosts.find((p) => p.category === cat);
+              return null;
             }
           })
         );
@@ -82,7 +81,7 @@ export default function Sesion3() {
           className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar"
         >
           <div className="flex w-full flex-nowrap space-x-0">
-            {posts.map((post, i) => (
+            {posts?.map((post, i) => (
               <div
                 key={i}
                 className="relative min-w-[100vw] sm:min-w-[50vw] md:min-w-[33vw] lg:min-w-[25%] h-[500px] overflow-hidden snap-start border-0"

@@ -20,7 +20,7 @@ export const LayoutNewPosts = ({
   categoryDisplayName,
   marginTop = "",
 }: CategoryPostsProps) => {
-  const [posts, setPosts] = useState<any[]>(DefaultNewPosts);
+  const [posts, setPosts] = useState<any[]>();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -43,12 +43,9 @@ export const LayoutNewPosts = ({
 
         if (data.posts?.length) {
           setPosts(data.posts);
-        } else {
-          setPosts(DefaultNewPosts);
         }
       } catch (error) {
         console.error(`Error fetching ${categoryDisplayName} posts:`, error);
-        setPosts(DefaultNewPosts);
       }
 
       setIsLoading(false);
@@ -57,7 +54,7 @@ export const LayoutNewPosts = ({
     getCategoryPosts();
   }, [categorySlug, categoryDisplayName]);
 
-  if (posts.length === 0 && !isLoading) {
+  if (posts?.length === 0 && !isLoading) {
     return (
       <div className="py-10">
         <div className="max-w-screen-xl mx-auto text-center">
@@ -84,9 +81,11 @@ export const LayoutNewPosts = ({
         {isLoading ? (
           <div className="space-y-8">
             {[0, 1, 2].map((index) => (
-              <div 
-                key={`skeleton-${index}`} 
-                className={`${index !== 2 ? "border-b border-gray-200" : ""} pb-8`}
+              <div
+                key={`skeleton-${index}`}
+                className={`${
+                  index !== 2 ? "border-b border-gray-200" : ""
+                } pb-8`}
               >
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="w-full md:w-2/5 lg:w-2/5">
@@ -114,7 +113,7 @@ export const LayoutNewPosts = ({
           </div>
         ) : (
           <div className="space-y-8">
-            {posts.map((post, index) => (
+            {posts?.map((post, index) => (
               <AnimateOnScroll key={post.id || index}>
                 <div
                   key={post.id || index}
@@ -136,7 +135,9 @@ export const LayoutNewPosts = ({
                     <div className="w-full md:w-3/5 lg:w-3/5">
                       <div>
                         <span
-                          className={`inline-block px-3 py-1 text-xs text-white uppercase font-medium ${getCategoryColor(categorySlug)} rounded-sm mb-3`}
+                          className={`inline-block px-3 py-1 text-xs text-white uppercase font-medium ${getCategoryColor(
+                            categorySlug
+                          )} rounded-sm mb-3`}
                         >
                           {categoryDisplayName}
                         </span>
@@ -151,7 +152,9 @@ export const LayoutNewPosts = ({
                         </h3>
                         <p
                           className="text-gray-500 text-md mb-4 line-clamp-2 overflow-hidden"
-                          dangerouslySetInnerHTML={{ __html: xss(post?.excerpt) }}
+                          dangerouslySetInnerHTML={{
+                            __html: xss(post?.excerpt),
+                          }}
                         />
                         <div className="flex items-center text-xs text-gray-500 mb-4">
                           <span className="mr-1">By</span>
@@ -162,7 +165,10 @@ export const LayoutNewPosts = ({
                           <span>{formatDate(post.date)}</span>
                         </div>
 
-                        <ButtonAnimation text="Xem thêm" link={`${post.slug}`} />
+                        <ButtonAnimation
+                          text="Xem thêm"
+                          link={`${post.slug}`}
+                        />
                       </div>
                     </div>
                   </div>
