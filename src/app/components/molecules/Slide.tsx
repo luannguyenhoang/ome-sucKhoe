@@ -41,7 +41,7 @@ export default function Slide({ post }: SlideProps) {
 
           <div className="relative overflow-hidden">
             <h3 className="lg:text-5xl text-xl font-bold mb-4 lg:w-[45%] w-[80%] leading-relaxed lg:leading-tight">
-              <Link href={`${post.slug}`} className="inline group/title">
+              <Link href={`/${post.slug}`} className="inline group/title">
                 <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_2px),#FFFFFFFF_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover/title:bg-[length:100%_100%] transition-all duration-1000">
                   {xss(post.title)}
                 </span>
@@ -69,7 +69,7 @@ export default function Slide({ post }: SlideProps) {
           </div>
           <ButtonAnimation
             margin="mt-6"
-            link={`${post.slug}`}
+            link={`/${post.slug}`}
             padding="px-6 py-4"
             fontWeight="font-bold"
             uppercase={true}

@@ -230,7 +230,7 @@ export const CategoryPosts = () => {
           <div className="max-w-[900px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
             {filteredPosts.length > 0 && (
               <Link
-                href={`${filteredPosts[0]?.slug}`}
+                href={`/${filteredPosts[0]?.slug}`}
                 className="relative rounded-md overflow-hidden aspect-[16/14] group"
               >
                 <Image

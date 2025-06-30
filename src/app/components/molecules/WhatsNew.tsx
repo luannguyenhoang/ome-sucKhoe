@@ -109,7 +109,7 @@ export const WhatsNew = () => {
           ) : (
             <div className="flex flex-col md:flex-row gap-6">
               <div className="md:w-3/5">
-                <Link href={`${posts[0]?.slug}`} className="block group">
+                <Link href={`/${posts[0]?.slug}`} className="block group">
                   <div className="relative rounded-md overflow-hidden aspect-[9/9]">
                     <Image
                       src={posts[0]?.featured_image}
