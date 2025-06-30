@@ -179,7 +179,7 @@ export default function TopCategoryPosts() {
                         <div className="py-4">
                           <h3 className="text-lg font-bold mb-2">
                             <div className="relative overflow-hidden group">
-                              <Link href={`${posts[0]?.slug}`}>
+                              <Link href={`/${posts[0]?.slug}`}>
                                 <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_2px),#000000_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
                                   {xss(posts[0]?.title || "")}
                                 </span>
@@ -214,7 +214,7 @@ export default function TopCategoryPosts() {
                           >
                             <h4 className="text-base font-bold mb-2">
                               <div className="relative overflow-hidden group">
-                                <Link href={`${post.slug}`}>
+                                <Link href={`/${post.slug}`}>
                                   <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_1px),#000000_calc(100%_-_1px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
                                     {xss(post.title)}
                                   </span>

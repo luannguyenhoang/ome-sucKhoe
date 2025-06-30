@@ -11,7 +11,9 @@ import ReactPaginate from "react-paginate";
 import xss from "xss";
 
 const CardBlogVert = dynamic(() =>
-  import("@/src/app/components/atoms/CardBlogVert").then((mod) => mod.CardBlogVert)
+  import("@/src/app/components/atoms/CardBlogVert").then(
+    (mod) => mod.CardBlogVert
+  )
 );
 const LoadingListPost = dynamic(() =>
   import("@/src/app/components/atoms/LoadingListPost").then(
@@ -120,7 +122,9 @@ export const ListPosts = ({
       setIsLoading(true);
 
       try {
-        let url = `/suc-khoe/api/posts?&size=${first}&offset=${(page - 1) * first}`;
+        let url = `/suc-khoe/api/posts?&size=${first}&offset=${
+          (page - 1) * first
+        }`;
 
         if (searchTerm) {
           url += `&search=${encodeURIComponent(searchTerm)}`;
@@ -160,22 +164,6 @@ export const ListPosts = ({
     getPosts();
   }, [page, searchTerm, type]);
 
-  const handlePageChange = (selectedItem: { selected: number }) => {
-    if (handleRouter) {
-      let url = `/thu-vien?page=${selectedItem.selected + 1}`;
-
-      if (searchTerm) {
-        url += `&search=${encodeURIComponent(searchTerm)}`;
-      }
-
-      if (type) {
-        url += `&category=${encodeURIComponent(type)}`;
-      }
-
-      router.push(url);
-    }
-  };
-
   return (
     <div>
       {!isLoading && (
@@ -204,7 +192,7 @@ export const ListPosts = ({
                 previousLabel={<PreviousIcon />}
                 nextLabel={<NextIcon />}
                 pageCount={Math.ceil(Number(totalPosts) / first)}
-                onPageChange={handleRouter || handlePageChange}
+                onPageChange={handleRouter}
                 pageRangeDisplayed={1}
                 marginPagesDisplayed={1}
                 activeClassName="active"

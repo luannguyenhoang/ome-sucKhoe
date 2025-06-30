@@ -108,7 +108,7 @@ export const MostViewedPost = () => {
               </div>
             </div>
             <div className="text-white w-[80%] mx-auto mt-[-30px] rounded-lg h-auto bg-white z-30 relative pb-5 p-2">
-              <Link href={`${posts[0]?.slug}`} className="block group">
+              <Link href={`/${posts[0]?.slug}`} className="block group">
                 <div className="p-3 border-b">
                   <div className="text-gray-600 text-xs uppercase mb-1">
                     {getCategoryDisplayName(posts[0]?.categories[0]) ||

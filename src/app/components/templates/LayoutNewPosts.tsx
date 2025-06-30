@@ -143,7 +143,7 @@ export const LayoutNewPosts = ({
                         </span>
                         <h3 className="text-xl font-bold mb-3">
                           <div className="relative overflow-hidden group">
-                            <Link href={`${post.slug}`}>
+                            <Link href={`/${post.slug}`}>
                               <span className="relative inline bg-[linear-gradient(transparent_calc(100%_-_2px),#000000_calc(100%_-_2px))] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-all duration-1000">
                                 {xss(post.title)}
                               </span>
@@ -167,7 +167,7 @@ export const LayoutNewPosts = ({
 
                         <ButtonAnimation
                           text="Xem thêm"
-                          link={`${post.slug}`}
+                          link={`/${post.slug}`}
                         />
                       </div>
                     </div>

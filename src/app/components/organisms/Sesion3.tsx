@@ -87,7 +87,7 @@ export default function Sesion3() {
                 className="relative min-w-[100vw] sm:min-w-[50vw] md:min-w-[33vw] lg:min-w-[25%] h-[500px] overflow-hidden snap-start border-0"
                 style={{ marginLeft: i > 0 ? "-1px" : "0" }}
               >
-                <Link href={post.slug || "/"} className="block group h-full">
+                <Link href={`/${post.slug}`} className="block group h-full">
                   <div className="relative h-full w-full">
                     {loading ? (
                       <div className="absolute inset-0 bg-gray-200 animate-pulse">
