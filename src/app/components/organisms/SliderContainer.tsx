@@ -18,11 +18,11 @@ export default function SliderContainer() {
     handleMouseDown,
     handleMouseMove,
     handleMouseUp,
-    handleMouseLeave,
+    handleMouseLeave
   } = useSliderNavigation({ totalSlides: posts.length });
   const { sidebarRef, registerActiveItemRef } = useSidebarScroll({
     currentSlide,
-    totalSlides: posts.length,
+    totalSlides: posts.length
   });
 
   // Preload the first image to improve LCP
@@ -43,6 +43,14 @@ export default function SliderContainer() {
   if (loading) {
     return (
       <div className="w-full h-[720px] lg:bg-black/40 animate-pulse flex items-center justify-center" />
+    );
+  }
+
+  if (posts.length === 0) {
+    return (
+      <div className="w-full h-[720px] bg-black/10 flex items-center justify-center text-xl font-medium">
+        Dữ liệu đang được cập nhật
+      </div>
     );
   }
 

@@ -9,7 +9,7 @@ const NestedMobileItem = ({
   openSubmenus,
   toggleSubmenu,
   level = 0,
-  onClose,
+  onClose
 }: {
   item: TMenuItem;
   isActive: (path: string) => boolean;
@@ -99,7 +99,7 @@ const NestedMobileItem = ({
 
 export default function MobileMenu({
   mobileMenuOpen,
-  setMobileMenuOpen,
+  setMobileMenuOpen
 }: {
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (mobileMenuOpen: boolean) => void;
@@ -116,7 +116,7 @@ export default function MobileMenu({
   const toggleSubmenu = (id: string) => {
     setOpenSubmenus((prev) => ({
       ...prev,
-      [id]: !prev[id],
+      [id]: !prev[id]
     }));
   };
 

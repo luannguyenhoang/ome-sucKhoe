@@ -31,7 +31,7 @@ export function generateMetadataFromFullHead(
     description: extractMetaContent(cleanedFullHead, "description") || "",
     robots: extractMetaContent(cleanedFullHead, "robots") || "index, follow",
     alternates: {
-      canonical: extractMetaContent(cleanedFullHead, "canonical") || "",
+      canonical: extractMetaContent(cleanedFullHead, "canonical") || ""
     },
     openGraph: {
       title: extractMetaContent(cleanedFullHead, "og:title") || "",
@@ -51,12 +51,12 @@ export function generateMetadataFromFullHead(
             extractMetaContent(cleanedFullHead, "og:image:height") || "630"
           ),
           alt: extractMetaContent(cleanedFullHead, "og:image:alt") || "",
-          type: extractMetaContent(cleanedFullHead, "og:image:type") || "",
-        },
+          type: extractMetaContent(cleanedFullHead, "og:image:type") || ""
+        }
       ],
       publishedTime:
         extractMetaContent(cleanedFullHead, "article:published_time") || "",
-      section: extractMetaContent(cleanedFullHead, "article:section") || "",
+      section: extractMetaContent(cleanedFullHead, "article:section") || ""
     },
     twitter: {
       card:
@@ -70,7 +70,7 @@ export function generateMetadataFromFullHead(
         extractMetaContent(cleanedFullHead, "twitter:description") || "",
       site: extractMetaContent(cleanedFullHead, "twitter:site") || "",
       creator: extractMetaContent(cleanedFullHead, "twitter:creator") || "",
-      images: [extractMetaContent(cleanedFullHead, "twitter:image") || ""],
-    },
+      images: [extractMetaContent(cleanedFullHead, "twitter:image") || ""]
+    }
   };
 }

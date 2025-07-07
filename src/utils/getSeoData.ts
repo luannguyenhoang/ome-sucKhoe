@@ -1,7 +1,6 @@
 import { ApolloClient, DocumentNode, InMemoryCache } from "@apollo/client";
 import { SeoData } from "../types/SeoData";
 
-
 /**
  * @param query
  * @param nodeKey

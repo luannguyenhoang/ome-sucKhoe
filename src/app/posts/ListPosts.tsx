@@ -102,7 +102,7 @@ export const StyledPaginate = styled(ReactPaginate)`
 
 export const ListPosts = ({
   handleRouter,
-  type,
+  type
 }: {
   handleRouter?: ({ selected }: { selected: number }) => void;
   type?: string;
@@ -135,7 +135,7 @@ export const ListPosts = ({
         }
 
         const res = await fetch(url, {
-          next: { revalidate: 1 },
+          next: { revalidate: 1 }
         });
 
         if (!res.ok) {

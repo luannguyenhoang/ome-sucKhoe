@@ -7,10 +7,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "adminsuckhoe.ome.edu.vn",
-        pathname: "/**",
-      },
-    ],
-  },
+        pathname: "/**"
+      }
+    ]
+  }
 };
 
 module.exports = nextConfig;

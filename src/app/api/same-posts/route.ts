@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
       try {
         const { data } = await getClient().query({
           query: GET_SAME_POSTS,
-          variables,
+          variables
         });
 
         return data?.posts?.nodes || [];
@@ -61,8 +61,9 @@ export async function GET(req: NextRequest) {
       slug: node.slug,
       date: node.date,
       excerpt: node.excerpt,
-      featured_image: node.featuredImage?.node?.mediaItemUrl || "/suc-khoe/no-image.jpeg",
-      categories: node.categories.nodes.map((cat: any) => cat.slug),
+      featured_image:
+        node.featuredImage?.node?.mediaItemUrl || "/suc-khoe/no-image.jpeg",
+      categories: node.categories.nodes.map((cat: any) => cat.slug)
     }));
 
     return NextResponse.json({ posts }, { status: 200 });

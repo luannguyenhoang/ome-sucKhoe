@@ -5,7 +5,7 @@ import React from "react";
 export const LoadingListPost = ({
   count,
   col,
-  showTitle = false,
+  showTitle = false
 }: {
   count: number;
   col: number;

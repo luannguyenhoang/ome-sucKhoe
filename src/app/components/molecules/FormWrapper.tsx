@@ -20,7 +20,7 @@ export const FormWrapper = ({
   title,
   color,
   type = "form-main",
-  showTitle = false,
+  showTitle = false
 }: {
   title?: string;
   color?: string;
@@ -32,7 +32,7 @@ export const FormWrapper = ({
     url: "",
     uuid: "",
     divId: "",
-    divClass: "",
+    divClass: ""
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -102,7 +102,7 @@ export const FormWrapper = ({
       url,
       uuid,
       divId,
-      divClass,
+      divClass
     };
   };
 
@@ -152,7 +152,7 @@ export const FormWrapper = ({
           minHeight: "60vh",
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         <div>Dữ liệu đang được chúng tôi cập nhập</div>
@@ -169,7 +169,7 @@ export const FormWrapper = ({
             textAlign: "center",
             color: color || "inherit",
             paddingTop: "10px",
-            paddingBottom: "16px",
+            paddingBottom: "16px"
           }}
         >
           {title}

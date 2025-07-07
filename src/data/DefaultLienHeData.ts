@@ -9,6 +9,6 @@ export const defaultLienHeData = {
     email: "omevietnam@gmail.com",
     linkEmail: "mailto:omevietnam@gmail.com",
     trangWeb: "tin-tuc-ome.com",
-    linkWeb: "https://tin-tuc-ome.com",
-  },
+    linkWeb: "https://tin-tuc-ome.com"
+  }
 };

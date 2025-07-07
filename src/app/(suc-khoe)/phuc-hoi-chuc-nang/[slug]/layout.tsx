@@ -13,7 +13,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const variables = { uri: slug };
-  
+
   const { seo } = await getSeoData(GET_SEO, "pageBy", [], variables);
 
   return {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       seo.fullHead || "",
       seo.focusKeywords || ""
     ),
-    robots: "index, follow",
+    robots: "index, follow"
   };
 }
 

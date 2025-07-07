@@ -28,16 +28,16 @@ export const Sesion1 = () => {
       setIsLoading(true);
       try {
         const data = await getData(GET_CATEGORY);
-
         if (data?.allCategory?.nodes[0]?.categoryPost?.content) {
           const categoryData =
             data.allCategory.nodes[0].categoryPost.content.map(
               (item: any, index: number) => ({
                 id: index + 1,
                 title: item.nameCategory,
-                imageUrl: item.image.node.mediaItemUrl,
+                imageUrl:
+                  item.image?.node?.mediaItemUrl || "/suc-khoe/no-image.jpeg",
                 alt: item.nameCategory,
-                slug: toSlug(item.nameCategory),
+                slug: toSlug(item.nameCategory)
               })
             );
 
@@ -70,7 +70,7 @@ export const Sesion1 = () => {
           setTopics(
             filteredCategoryData.map((category: any) => ({
               ...category,
-              countPosts: counts[category.title] || 0,
+              countPosts: counts[category.title] || 0
             }))
           );
         }
@@ -142,8 +142,6 @@ export const Sesion1 = () => {
       return { transform: `translateX(-${currentIndex * (14 + 1)}rem)` };
     }
   };
-
-  if (error) return <div>Dữ liệu đang được cập nhật</div>;
 
   return (
     <div className="max-w-7xl lg:mt-[-100px] lg:pt-0 mt-16 bg-white border border-gray-100 rounded-2xl shadow-2xl mx-2 lg:px-0 relative">

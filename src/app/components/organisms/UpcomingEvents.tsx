@@ -6,7 +6,7 @@ import { LoadingNewPost } from "@/src/app/components/atoms/LoadingNewPost";
 export const UpcomingEvents = ({
   showTitle = true,
   count = 4,
-  textColor = "text-black",
+  textColor = "text-black"
 }: {
   showTitle?: boolean;
   count?: number;
@@ -23,7 +23,7 @@ export const UpcomingEvents = ({
         const res = await fetch(
           `/suc-khoe/api/posts?size=${count}&offset=0&category=su-kien-sap-toi`,
           {
-            next: { revalidate: 1 },
+            next: { revalidate: 1 }
           }
         );
 
@@ -77,11 +77,11 @@ export const UpcomingEvents = ({
         <LoadingNewPost count={count} />
       ) : (
         posts.map((post, index) => (
-            <CardNewPostInDetailPost
-              key={index}
-              post={post}
-              textColor={textColor}
-            />
+          <CardNewPostInDetailPost
+            key={index}
+            post={post}
+            textColor={textColor}
+          />
         ))
       )}
     </div>

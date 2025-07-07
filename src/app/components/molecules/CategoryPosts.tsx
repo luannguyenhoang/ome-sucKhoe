@@ -3,7 +3,7 @@
 import { formatDate } from "@/src/utils/date";
 import {
   getCategoryColor,
-  getCategoryDisplayName,
+  getCategoryDisplayName
 } from "@/src/utils/getCategoryDisplayNameAndColor";
 import Image from "next/image";
 import Link from "next/link";
@@ -95,7 +95,7 @@ export const CategoryPosts = () => {
           url += `&category=${activeCategory}`;
           url += `&additionalCategory=pho-bien-nhat`;
           const res = await fetch(url, {
-            next: { revalidate: 1 },
+            next: { revalidate: 1 }
           });
 
           if (!res.ok) {
@@ -176,7 +176,7 @@ export const CategoryPosts = () => {
         </div>
       </div>
 
-      {filteredPosts.length === 0 && !isLoading ? (
+      {filteredPosts.length === 0 && !isLoading && !posts == null ? (
         <div className="max-w-[900px] mx-auto text-center py-8 text-black">
           <p>Không có bài viết nào trong danh mục này.</p>
         </div>
@@ -234,7 +234,10 @@ export const CategoryPosts = () => {
                 className="relative rounded-md overflow-hidden aspect-[16/14] group"
               >
                 <Image
-                  src={filteredPosts[0]?.featured_image || "/suc-khoe/no-image.jpeg"}
+                  src={
+                    filteredPosts[0]?.featured_image ||
+                    "/suc-khoe/no-image.jpeg"
+                  }
                   alt="Featured post"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 900px"

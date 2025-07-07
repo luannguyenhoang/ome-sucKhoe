@@ -6,7 +6,7 @@ import {
   useCallback,
   useRef,
   useState,
-  MutableRefObject,
+  MutableRefObject
 } from "react";
 
 interface UseSliderNavigationProps {
@@ -14,7 +14,7 @@ interface UseSliderNavigationProps {
 }
 
 export const useSliderNavigation = ({
-  totalSlides,
+  totalSlides
 }: UseSliderNavigationProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(
@@ -104,6 +104,6 @@ export const useSliderNavigation = ({
     handleMouseDown,
     handleMouseMove,
     handleMouseUp,
-    handleMouseLeave,
+    handleMouseLeave
   };
 };

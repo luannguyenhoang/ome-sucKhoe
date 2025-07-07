@@ -13,7 +13,7 @@ export default function Cta() {
   const [ctaData, setCtaData] = useState({
     hotline: "",
     messenger: "",
-    zalo: "",
+    zalo: ""
   });
   const [isLoading, setIsLoading] = useState(true);
 

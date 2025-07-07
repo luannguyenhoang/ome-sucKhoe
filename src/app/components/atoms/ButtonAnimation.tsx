@@ -11,7 +11,7 @@ export default function ButtonAnimation({
   fontWeight = "font-light",
   padding = "px-4 py-2",
   link = "/",
-  margin = "mt-0",
+  margin = "mt-0"
 }: {
   text: string;
   hoverBg?: string;

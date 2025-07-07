@@ -2,7 +2,7 @@
 import { defaultPosts } from "@/src/data/DefaultPosts";
 import {
   getCategoryColor,
-  getCategoryDisplayName,
+  getCategoryDisplayName
 } from "@/src/utils/getCategoryDisplayNameAndColor";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,7 +20,7 @@ export default function Sesion3() {
       "spa-massage",
       "van-dong",
       "dinh-duong",
-      "phuc-hoi-chuc-nang",
+      "phuc-hoi-chuc-nang"
     ],
     []
   );
@@ -31,9 +31,12 @@ export default function Sesion3() {
         const results = await Promise.all(
           categories.map(async (cat) => {
             try {
-              const res = await fetch(`/suc-khoe/api/posts?category=${cat}&size=1`, {
-                cache: "no-store",
-              });
+              const res = await fetch(
+                `/suc-khoe/api/posts?category=${cat}&size=1`,
+                {
+                  cache: "no-store"
+                }
+              );
 
               const { posts } = await res.json();
               const post = posts?.[0];
@@ -41,7 +44,8 @@ export default function Sesion3() {
                 ? {
                     ...post,
                     category: cat,
-                    featured_image: post.featured_image || "/suc-khoe/no-image.jpeg",
+                    featured_image:
+                      post.featured_image || "/suc-khoe/no-image.jpeg"
                   }
                 : null;
             } catch {
@@ -64,7 +68,7 @@ export default function Sesion3() {
       const { scrollLeft, scrollWidth, clientWidth } = container;
       setNavState({
         start: scrollLeft < 10,
-        end: scrollLeft + clientWidth >= scrollWidth - 10,
+        end: scrollLeft + clientWidth >= scrollWidth - 10
       });
     };
 
@@ -153,7 +157,7 @@ export default function Sesion3() {
                 containerRef.current?.scrollBy({
                   left:
                     (containerRef.current.clientWidth / 4) * (isNext ? 1 : -1),
-                  behavior: "smooth",
+                  behavior: "smooth"
                 })
               }
               className={`absolute top-1/2 ${

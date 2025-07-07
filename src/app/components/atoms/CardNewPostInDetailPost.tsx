@@ -6,15 +6,13 @@ import Link from "next/link";
 export default function CardNewPostInDetailPost({
   post,
   categoryCounts,
-  textColor = "text-black",
+  textColor = "text-black"
 }: {
   post: any;
   categoryCounts?: any;
   textColor?: string;
 }) {
   return (
-  
-    
     <Link
       href={`/${post.slug}`}
       className="flex items-center gap-4 cursor-pointer  relative py-4 group"

@@ -32,7 +32,9 @@ export default function CardTopic({ topic, screenSize }: CardTopicProps) {
         </div>
 
         <div className="absolute bottom-3 w-full text-white font-semibold flex flex-col items-center justify-center drop-shadow-md select-none">
-          <div className="text-[20px] hover:text-blue-500 transform translate-y-2 transition-transform duration-300 group-hover:-translate-y-2">{topic.title}</div>
+          <div className="text-[20px] hover:text-blue-500 transform translate-y-2 transition-transform duration-300 group-hover:-translate-y-2">
+            {topic.title}
+          </div>
           <div className="text-[15px] !font-medium transform translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all duration-300">
             ({topic.countPosts || 0})
           </div>

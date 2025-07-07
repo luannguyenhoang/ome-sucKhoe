@@ -7,7 +7,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 export const SocialNetworkLinks = ({
   url,
   col = false,
-  showTitle = true,
+  showTitle = true
 }: {
   url?: string;
   col?: boolean;
@@ -32,7 +32,7 @@ export const SocialNetworkLinks = ({
       icon: <BsLink45Deg className="w-6 h-6" />,
       bgColor: "bg-gray-600",
       isExternal: false,
-      onClick: handleCopyLink,
+      onClick: handleCopyLink
     },
 
     {
@@ -42,7 +42,7 @@ export const SocialNetworkLinks = ({
       )}`,
       icon: <FaFacebook className="w-6 h-6" />,
       bgColor: "bg-[#3b5998]",
-      isExternal: true,
+      isExternal: true
     },
     {
       name: "Twitter",
@@ -51,14 +51,14 @@ export const SocialNetworkLinks = ({
       )}`,
       icon: <FaTwitter className="w-6 h-6" />,
       bgColor: "bg-[#1DA1F2]",
-      isExternal: true,
+      isExternal: true
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/yourprofile",
       icon: <FaInstagram className="w-6 h-6" />,
       bgColor: "bg-[#E4405F]",
-      isExternal: true,
+      isExternal: true
     },
     {
       name: "LinkedIn",
@@ -67,8 +67,8 @@ export const SocialNetworkLinks = ({
       )}`,
       icon: <FaLinkedin className="w-6 h-6" />,
       bgColor: "bg-[#0077B5]",
-      isExternal: true,
-    },
+      isExternal: true
+    }
   ];
 
   return (

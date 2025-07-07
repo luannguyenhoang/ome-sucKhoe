@@ -4,14 +4,14 @@ export const defaultPosts: any[] = [
     slug: "phuong-phap-y-hoc-co-truyen",
     category: "y-hoc-co-truyen",
     featured_image: "/suc-khoe/no-image.jpeg",
-    author: "Bs. Nguyễn Văn A",
+    author: "Bs. Nguyễn Văn A"
   },
   {
     title: "Chăm sóc sức khỏe trẻ em trong mùa dịch - Những lưu ý quan trọng",
     slug: "cham-soc-suc-khoe-tre-em",
     category: "nhi-khoa",
     featured_image: "/suc-khoe/no-image.jpeg",
-    author: "Bs. Trần Thị B",
+    author: "Bs. Trần Thị B"
   },
   {
     title:
@@ -19,7 +19,7 @@ export const defaultPosts: any[] = [
     slug: "huong-dan-kham-thai-dinh-ky",
     category: "san-phu-khoa",
     featured_image: "/suc-khoe/no-image.jpeg",
-    author: "Bs. Lê Thị C",
+    author: "Bs. Lê Thị C"
   },
   {
     title:
@@ -27,8 +27,8 @@ export const defaultPosts: any[] = [
     slug: "phuc-hoi-chan-thuong-the-thao",
     category: "y-hoc-the-thao",
     featured_image: "/suc-khoe/no-image.jpeg",
-    author: "Bs. Hoàng Văn D",
-  },
+    author: "Bs. Hoàng Văn D"
+  }
 ];
 
 export const DefaultNewPosts = [
@@ -40,7 +40,7 @@ export const DefaultNewPosts = [
     excerpt:
       "Đây là bài viết mẫu về các vấn đề sức khỏe thường gặp và cách phòng tránh hiệu quả thông qua chế độ dinh dưỡng phù hợp...",
     author: { name: "Bs. Minh Tâm" },
-    categories: ["default"],
+    categories: ["default"]
   },
   {
     id: "default-2",
@@ -50,7 +50,7 @@ export const DefaultNewPosts = [
     excerpt:
       "Những thói quen đơn giản giúp bạn duy trì sức khỏe tốt mỗi ngày mà không cần tốn nhiều thời gian và công sức, phù hợp với người có lịch trình bận rộn...",
     author: { name: "Bs. Thanh Huyền" },
-    categories: ["default"],
+    categories: ["default"]
   },
   {
     id: "default-3",
@@ -60,8 +60,8 @@ export const DefaultNewPosts = [
     excerpt:
       "Tổng hợp các bài tập thể dục đơn giản nhưng hiệu quả có thể thực hiện tại nhà để cải thiện sức khỏe và tăng cường hệ miễn dịch trong mùa dịch bệnh...",
     author: { name: "Bs. Quang Minh" },
-    categories: ["default"],
-  },
+    categories: ["default"]
+  }
 ];
 
 // Default data for TopCategoryPosts component
@@ -75,8 +75,8 @@ export const defaultTopCategoryPosts = {
       slug: "cac-bien-phap-phong-ngua-dich-benh-trong-cong-dong",
       featured_image: "/suc-khoe/no-image.jpeg",
       author: {
-        name: "Bs. Nguyễn Thị Hoa",
-      },
+        name: "Bs. Nguyễn Thị Hoa"
+      }
     },
     {
       id: "yhcd-2",
@@ -86,8 +86,8 @@ export const defaultTopCategoryPosts = {
       slug: "chuong-trinh-tiem-chung-mo-rong-cho-tre-em",
       featured_image: "/suc-khoe/no-image.jpeg",
       author: {
-        name: "Bs. Trần Văn Minh",
-      },
+        name: "Bs. Trần Văn Minh"
+      }
     },
     {
       id: "yhcd-3",
@@ -97,9 +97,9 @@ export const defaultTopCategoryPosts = {
       slug: "to-chuc-kham-suc-khoe-dinh-ky-cho-nguoi-cao-tuoi",
       featured_image: "/suc-khoe/no-image.jpeg",
       author: {
-        name: "Bs. Lê Thị Mai",
-      },
-    },
+        name: "Bs. Lê Thị Mai"
+      }
+    }
   ],
   "san-phu-khoa": [
     {
@@ -110,8 +110,8 @@ export const defaultTopCategoryPosts = {
       slug: "cham-soc-suc-khoe-phu-nu-mang-thai-trong-ba-thang-dau",
       featured_image: "/suc-khoe/no-image.jpeg",
       author: {
-        name: "Bs. Phạm Thị Hương",
-      },
+        name: "Bs. Phạm Thị Hương"
+      }
     },
     {
       id: "spk-2",
@@ -121,8 +121,8 @@ export const defaultTopCategoryPosts = {
       slug: "cac-benh-phu-khoa-thuong-gap-va-cach-phong-tranh",
       featured_image: "/suc-khoe/no-image.jpeg",
       author: {
-        name: "Bs. Nguyễn Thị Lan",
-      },
+        name: "Bs. Nguyễn Thị Lan"
+      }
     },
     {
       id: "spk-3",
@@ -132,9 +132,9 @@ export const defaultTopCategoryPosts = {
       slug: "chuan-bi-tam-ly-va-suc-khoe-truoc-khi-sinh",
       featured_image: "/suc-khoe/no-image.jpeg",
       author: {
-        name: "Bs. Trần Thị Hoa",
-      },
-    },
+        name: "Bs. Trần Thị Hoa"
+      }
+    }
   ],
   "y-hoc-the-thao": [
     {
@@ -145,8 +145,8 @@ export const defaultTopCategoryPosts = {
       slug: "phong-ngua-chan-thuong-khi-tap-luyen-the-thao",
       featured_image: "/suc-khoe/no-image.jpeg",
       author: {
-        name: "Bs. Hoàng Minh Tuấn",
-      },
+        name: "Bs. Hoàng Minh Tuấn"
+      }
     },
     {
       id: "yhtt-2",
@@ -156,8 +156,8 @@ export const defaultTopCategoryPosts = {
       slug: "che-do-dinh-duong-cho-van-dong-vien-chuyen-nghiep",
       featured_image: "/suc-khoe/no-image.jpeg",
       author: {
-        name: "Bs. Nguyễn Văn Hùng",
-      },
+        name: "Bs. Nguyễn Văn Hùng"
+      }
     },
     {
       id: "yhtt-3",
@@ -167,8 +167,8 @@ export const defaultTopCategoryPosts = {
       slug: "phuc-hoi-sau-chan-thuong-the-thao-phuong-phap-va-luu-y",
       featured_image: "/suc-khoe/no-image.jpeg",
       author: {
-        name: "Bs. Trần Đình Long",
-      },
-    },
-  ],
+        name: "Bs. Trần Đình Long"
+      }
+    }
+  ]
 };

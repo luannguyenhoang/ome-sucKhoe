@@ -2,7 +2,7 @@ import { SlideProps } from "@/src/types/SlideProps";
 import { formatDate } from "@/src/utils/date";
 import {
   getCategoryColor,
-  getCategoryDisplayName,
+  getCategoryDisplayName
 } from "@/src/utils/getCategoryDisplayNameAndColor";
 import Image from "next/image";
 import Link from "next/link";

@@ -50,7 +50,7 @@ export const getCategoryDisplayName = (slug?: string): string => {
     "ngon-ngu-va-giao-tiep": "Ngôn ngữ và giao tiếp",
     "than-kinh": "Thần kinh",
 
-    "su-kien-sap-toi": "Sự kiện sắp tới",
+    "su-kien-sap-toi": "Sự kiện sắp tới"
   };
 
   const displayName = categoryMap[slug] || "Sức khỏe";
@@ -64,7 +64,7 @@ export const getCategoryColor = (slug: string): string => {
     "van-dong": "bg-[#1DA1F2]",
     "spa-massage": "bg-[#0077B5]",
     "dinh-duong": "bg-orange-600",
-    "phuc-hoi-chuc-nang": "bg-green-600",
+    "phuc-hoi-chuc-nang": "bg-green-600"
   };
 
   return colorMap[slug] || "bg-blue-500";

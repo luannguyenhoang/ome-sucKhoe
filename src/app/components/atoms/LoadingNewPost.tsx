@@ -1,6 +1,6 @@
 export const LoadingNewPost = ({
   count,
-  showTitle = false,
+  showTitle = false
 }: {
   count: number;
   showTitle?: boolean;

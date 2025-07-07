@@ -6,7 +6,7 @@ import { getClient } from "@/src/lib/ApolloClient";
 import { replaceSeoRM } from "@/src/utils/seoRankMath";
 import {
   extractMetaContent,
-  generateMetadataFromFullHead,
+  generateMetadataFromFullHead
 } from "@/src/utils/seoUtils";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
@@ -28,7 +28,7 @@ async function getPost(slug: string) {
   try {
     const { data, errors } = await getClient().query({
       query: GET_POST_BY_SLUG,
-      variables: { id: slug },
+      variables: { id: slug }
     });
 
     if (errors || !data?.post) {
@@ -45,14 +45,14 @@ async function getPost(slug: string) {
       content: data.post.content,
       featuredImage: data.post.featuredImage?.node?.mediaItemUrl || "",
       categories: categories.map((cat: any) => ({
-        slug: cat.slug,
+        slug: cat.slug
       })),
 
       seo: {
         fullHead: data.post.seo?.fullHead || "",
         title: data.post.seo?.title || "",
-        focusKeywords: data.post.seo?.focusKeywords || "",
-      },
+        focusKeywords: data.post.seo?.focusKeywords || ""
+      }
     };
   } catch (error) {
     console.error("Error fetching post:", error);
@@ -60,7 +60,7 @@ async function getPost(slug: string) {
   }
 }
 export async function generateMetadata({
-  params,
+  params
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
@@ -69,11 +69,13 @@ export async function generateMetadata({
   if (!post) return { title: "Bài viết không tồn tại" };
 
   return {
-    ...generateMetadataFromFullHead(post.seo.fullHead, post.seo.focusKeywords),
+    ...generateMetadataFromFullHead(post.seo.fullHead, post.seo.focusKeywords)
   };
 }
 export const revalidate = 60;
-export default async function Page(props: { params: Promise<{ slug: string }> }) {
+export default async function Page(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await props.params;
   const post = await getPost(slug);
   const processedFullHead = replaceSeoRM(post?.seo.fullHead);
@@ -95,7 +97,7 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: jsonLdContent,
+              __html: jsonLdContent
             }}
           />
           <Suspense fallback={<LoadingPost count={1} />}>

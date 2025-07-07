@@ -10,7 +10,7 @@ const SliderBar = dynamic(() =>
 export const LayoutBottom = ({
   children,
   m,
-  path,
+  path
 }: {
   children: ReactNode;
   m?: string;

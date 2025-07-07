@@ -3,11 +3,9 @@
 import { AnimateOnScrollProps } from "@/src/types/AnimateOnScrollProps";
 import { useEffect, useRef, useState } from "react";
 
-
-
 export default function AnimateOnScroll({
   children,
-  className = "",
+  className = ""
 }: AnimateOnScrollProps) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -23,7 +21,7 @@ export default function AnimateOnScroll({
       },
       {
         threshold: 0.6,
-        rootMargin: "0px 0px -50px 0px",
+        rootMargin: "0px 0px -50px 0px"
       }
     );
 

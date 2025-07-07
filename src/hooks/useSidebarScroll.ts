@@ -7,7 +7,10 @@ interface UseSidebarScrollProps {
   totalSlides: number;
 }
 
-export const useSidebarScroll = ({ currentSlide, totalSlides }: UseSidebarScrollProps) => {
+export const useSidebarScroll = ({
+  currentSlide,
+  totalSlides
+}: UseSidebarScrollProps) => {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const activeItemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -26,7 +29,7 @@ export const useSidebarScroll = ({ currentSlide, totalSlides }: UseSidebarScroll
         const itemRect = activeItem.getBoundingClientRect();
         const sidebarRect = sidebar.getBoundingClientRect();
         const isMobile = window.innerWidth < 1024;
-        
+
         if (isMobile) {
           const isVisible =
             itemRect.left >= sidebarRect.left &&
@@ -41,7 +44,7 @@ export const useSidebarScroll = ({ currentSlide, totalSlides }: UseSidebarScroll
 
             sidebar.scrollTo({
               left: scrollLeft,
-              behavior: "smooth",
+              behavior: "smooth"
             });
           }
         } else {
@@ -58,7 +61,7 @@ export const useSidebarScroll = ({ currentSlide, totalSlides }: UseSidebarScroll
 
             sidebar.scrollTo({
               top: scrollTop,
-              behavior: "smooth",
+              behavior: "smooth"
             });
           }
         }
@@ -66,7 +69,10 @@ export const useSidebarScroll = ({ currentSlide, totalSlides }: UseSidebarScroll
     }
   }, [currentSlide]);
 
-  const registerActiveItemRef = (index: number, ref: HTMLButtonElement | null) => {
+  const registerActiveItemRef = (
+    index: number,
+    ref: HTMLButtonElement | null
+  ) => {
     if (activeItemRefs.current) {
       activeItemRefs.current[index] = ref;
     }
@@ -76,4 +82,4 @@ export const useSidebarScroll = ({ currentSlide, totalSlides }: UseSidebarScroll
     sidebarRef,
     registerActiveItemRef
   };
-}; 
+};

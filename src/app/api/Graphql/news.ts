@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-
 export const GET_POSTS_AND_NEWS = gql`
   query GetPostsAndNews($size: Int!, $offset: Int!) {
     posts(where: { offsetPagination: { size: $size, offset: $offset } }) {

@@ -19,112 +19,129 @@ export const Category = ({ path }: { path?: string }) => {
       : `/${pathToNormalize}`;
   }, []);
 
-  const findMenuItemByPath = useCallback((pathToFind: string): any => {
-    const normalizedPath = normalizePath(pathToFind);
+  const findMenuItemByPath = useCallback(
+    (pathToFind: string): any => {
+      const normalizedPath = normalizePath(pathToFind);
 
-    for (const menu of menus) {
-      if (menu.path === normalizedPath) {
-        return { menuItem: menu, parent: null };
-      }
-
-      if (!menu.childs) continue;
-
-      for (const child of menu.childs) {
-        if (child.path === normalizedPath) {
-          return { menuItem: child, parent: menu };
+      for (const menu of menus) {
+        if (menu.path === normalizedPath) {
+          return { menuItem: menu, parent: null };
         }
 
-        if (!child.childs) continue;
+        if (!menu.childs) continue;
 
-        for (const grandChild of child.childs) {
-          if (grandChild.path === normalizedPath) {
-            return { menuItem: grandChild, parent: child };
+        for (const child of menu.childs) {
+          if (child.path === normalizedPath) {
+            return { menuItem: child, parent: menu };
+          }
+
+          if (!child.childs) continue;
+
+          for (const grandChild of child.childs) {
+            if (grandChild.path === normalizedPath) {
+              return { menuItem: grandChild, parent: child };
+            }
           }
         }
       }
-    }
 
-    return { menuItem: null, parent: null };
-  }, [normalizePath]);
+      return { menuItem: null, parent: null };
+    },
+    [normalizePath]
+  );
 
-  const findParentForSubcategory = useCallback((subcategoryPath: string): string | null => {
-    const normalizedPath = normalizePath(subcategoryPath);
+  const findParentForSubcategory = useCallback(
+    (subcategoryPath: string): string | null => {
+      const normalizedPath = normalizePath(subcategoryPath);
 
-    for (const menu of menus) {
-      if (!menu.childs) continue;
-      for (const child of menu.childs) {
-        const childPathSegment = child.path.split("/").pop() || "";
-        if (normalizedPath.includes(childPathSegment)) {
-          return menu.path.replace("/", "");
-        }
-        if (!child.childs) continue;
+      for (const menu of menus) {
+        if (!menu.childs) continue;
+        for (const child of menu.childs) {
+          const childPathSegment = child.path.split("/").pop() || "";
+          if (normalizedPath.includes(childPathSegment)) {
+            return menu.path.replace("/", "");
+          }
+          if (!child.childs) continue;
 
-        for (const grandChild of child.childs) {
-          const pathSegment = grandChild.path.split("/").pop() || "";
-          if (normalizedPath.includes(pathSegment)) {
-            return child.path.replace("/", "");
+          for (const grandChild of child.childs) {
+            const pathSegment = grandChild.path.split("/").pop() || "";
+            if (normalizedPath.includes(pathSegment)) {
+              return child.path.replace("/", "");
+            }
           }
         }
       }
-    }
 
-    return null;
-  }, [normalizePath]);
+      return null;
+    },
+    [normalizePath]
+  );
 
-  const findMatchingCategory = useCallback((
-    categoryData: any[],
-    subCategoryName: string,
-    slug: string
-  ): any | undefined => {
-    return categoryData.find(
-      (cat) =>
-        toSlug(cat.nameCategory) === slug ||
-        cat.nameCategory.toLowerCase().includes(subCategoryName.toLowerCase())
-    );
-  }, []);
+  const findMatchingCategory = useCallback(
+    (
+      categoryData: any[],
+      subCategoryName: string,
+      slug: string
+    ): any | undefined => {
+      return categoryData.find(
+        (cat) =>
+          toSlug(cat.nameCategory) === slug ||
+          cat.nameCategory.toLowerCase().includes(subCategoryName.toLowerCase())
+      );
+    },
+    []
+  );
 
-  const getSubCategories = useCallback((menuItem: any, categoryData: any[]): any[] => {
-    if (!menuItem.childs || menuItem.childs.length === 0) return categoryData;
+  const getSubCategories = useCallback(
+    (menuItem: any, categoryData: any[]): any[] => {
+      if (!menuItem.childs || menuItem.childs.length === 0) return categoryData;
 
-    const subCategories = menuItem.childs
-      .map((item: any) => {
-        const subCategoryName = item.title;
-        const slug = item.path.split("/").pop() || "";
-        return findMatchingCategory(categoryData, subCategoryName, slug);
-      })
-      .filter(Boolean) as any[];
+      const subCategories = menuItem.childs
+        .map((item: any) => {
+          const subCategoryName = item.title;
+          const slug = item.path.split("/").pop() || "";
+          return findMatchingCategory(categoryData, subCategoryName, slug);
+        })
+        .filter(Boolean) as any[];
 
-    return subCategories.length > 0 ? subCategories : categoryData;
-  }, [findMatchingCategory]);
+      return subCategories.length > 0 ? subCategories : categoryData;
+    },
+    [findMatchingCategory]
+  );
 
-  const fetchCategoryCount = useCallback(async (slug: string): Promise<number> => {
-    try {
-      const countRes = await fetch(`/suc-khoe/api/posts/count?category=${slug}`);
-      const countData = await countRes.json();
-      return countData.total || 0;
-    } catch (error) {
-      console.error(`Error fetching count for ${slug}:`, error);
-      return 0;
-    }
-  }, []);
+  const fetchCategoryCount = useCallback(
+    async (slug: string): Promise<number> => {
+      try {
+        const countRes = await fetch(
+          `/suc-khoe/api/posts/count?category=${slug}`
+        );
+        const countData = await countRes.json();
+        return countData.total || 0;
+      } catch (error) {
+        console.error(`Error fetching count for ${slug}:`, error);
+        return 0;
+      }
+    },
+    []
+  );
 
-  const mapCategoryToDisplayData = useCallback(async (
-    item: any,
-    linkPath: string
-  ): Promise<any | null> => {
-    if (!item) return null;
+  const mapCategoryToDisplayData = useCallback(
+    async (item: any, linkPath: string): Promise<any | null> => {
+      if (!item) return null;
 
-    const categoryName = item.nameCategory;
-    const slug = toSlug(categoryName);
-    const count = await fetchCategoryCount(slug);
+      const categoryName = item.nameCategory;
+      const slug = toSlug(categoryName);
+      const count = await fetchCategoryCount(slug);
 
-    return {
-      title: categoryName,
-      image: item.image?.node?.mediaItemUrl || "",
-      count,
-      link: `/${linkPath}/${slug}`,
-    };
-  }, [fetchCategoryCount]);
+      return {
+        title: categoryName,
+        image: item.image?.node?.mediaItemUrl || "/suc-khoe/no-image.jpeg",
+        count,
+        link: `/${linkPath}/${slug}`
+      };
+    },
+    [fetchCategoryCount]
+  );
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -194,7 +211,14 @@ export const Category = ({ path }: { path?: string }) => {
     };
 
     fetchCategories();
-  }, [path, parentPath, findMenuItemByPath, findParentForSubcategory, getSubCategories, mapCategoryToDisplayData]);
+  }, [
+    path,
+    parentPath,
+    findMenuItemByPath,
+    findParentForSubcategory,
+    getSubCategories,
+    mapCategoryToDisplayData
+  ]);
 
   if (error) {
     return (

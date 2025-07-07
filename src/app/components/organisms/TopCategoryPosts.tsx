@@ -28,16 +28,16 @@ type Post = {
 const categoryConfigs: CategoryConfig[] = [
   {
     slug: "spa-massage",
-    displayName: "Spa & Massage",
+    displayName: "Spa & Massage"
   },
   {
     slug: "dinh-duong",
-    displayName: "Dinh dưỡng",
+    displayName: "Dinh dưỡng"
   },
   {
     slug: "phuc-hoi-chuc-nang",
-    displayName: "Phục hồi chức năng",
-  },
+    displayName: "Phục hồi chức năng"
+  }
 ];
 
 export default function TopCategoryPosts() {
@@ -56,7 +56,7 @@ export default function TopCategoryPosts() {
             const res = await fetch(
               `/suc-khoe/api/posts?size=3&offset=0&category=${category.slug}`,
               {
-                next: { revalidate: 1 },
+                next: { revalidate: 1 }
               }
             );
 
@@ -161,7 +161,10 @@ export default function TopCategoryPosts() {
                       <div className="mb-6 bg-white overflow-hidden border-b border-gray-200">
                         <div className="relative h-56 overflow-hidden rounded-md">
                           <Image
-                            src={posts[0]?.featured_image || "/suc-khoe/no-image.jpeg"}
+                            src={
+                              posts[0]?.featured_image ||
+                              "/suc-khoe/no-image.jpeg"
+                            }
                             alt={posts[0]?.title || ""}
                             fill
                             className="object-cover transition-transform hover:scale-105 rounded-md duration-500"
@@ -190,7 +193,7 @@ export default function TopCategoryPosts() {
                             <p
                               className="text-gray-600 text-sm mb-3 line-clamp-2 overflow-hidden"
                               dangerouslySetInnerHTML={{
-                                __html: xss(posts[0].excerpt),
+                                __html: xss(posts[0].excerpt)
                               }}
                             />
                           )}

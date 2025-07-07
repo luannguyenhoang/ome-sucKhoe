@@ -10,7 +10,7 @@ export const CardBlog = ({
   title,
   desc,
   path,
-  tag,
+  tag
 }: {
   image?: string;
   title: string;
@@ -52,7 +52,7 @@ export const CardBlog = ({
             style={{
               width: "100%",
               height: "100%",
-              objectFit: "cover",
+              objectFit: "cover"
             }}
           />
         </div>

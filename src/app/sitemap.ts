@@ -23,14 +23,14 @@ const getAllPaths = (menus: TMenus): MetadataRoute.Sitemap => {
 async function getPostPaths(): Promise<MetadataRoute.Sitemap> {
   try {
     const { data } = await getClient().query({
-      query: GET_SITEMAP,
+      query: GET_SITEMAP
     });
 
     const posts = data?.posts?.nodes;
     if (!posts || !Array.isArray(posts)) return [];
 
     return posts.map((post: { slug: string }) => ({
-      url: `${API_URL}/${post.slug}`,
+      url: `${API_URL}/${post.slug}`
     }));
   } catch (error) {
     console.error("Failed to fetch posts for sitemap", error);

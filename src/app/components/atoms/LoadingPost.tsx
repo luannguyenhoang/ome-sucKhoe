@@ -2,9 +2,9 @@
 
 import React from "react";
 
-export const LoadingPost = ({count}: {count: number}) => {
+export const LoadingPost = ({ count }: { count: number }) => {
   return (
-    <div >
+    <div>
       <div className="flex flex-col gap-4">
         {[...Array(count)].map((_, index) => (
           <div

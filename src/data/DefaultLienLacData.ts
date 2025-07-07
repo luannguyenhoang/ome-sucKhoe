@@ -3,19 +3,19 @@ export const defaultLienLacData = {
   content: [
     {
       title: "Facebook",
-      url: "https://www.facebook.com/",
+      url: "https://www.facebook.com/"
     },
     {
       title: "X",
-      url: "https://x.com/home",
+      url: "https://x.com/home"
     },
     {
       title: "Shopee",
-      url: "https://shopee.vn/",
+      url: "https://shopee.vn/"
     },
     {
       title: "Youtube",
-      url: "https://www.youtube.com/",
-    },
-  ],
+      url: "https://www.youtube.com/"
+    }
+  ]
 };

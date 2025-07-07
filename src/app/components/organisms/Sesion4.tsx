@@ -2,10 +2,14 @@ import dynamic from "next/dynamic";
 import AnimateOnScroll from "@/src/app/components/atoms/AnimateOnScroll";
 
 const EventSesion4 = dynamic(() =>
-  import("@/src/app/components/molecules/EventSesion4").then((mod) => mod.EventSesion4)
+  import("@/src/app/components/molecules/EventSesion4").then(
+    (mod) => mod.EventSesion4
+  )
 );
 const LayoutNewPosts = dynamic(() =>
-  import("@/src/app/components/templates/LayoutNewPosts").then((mod) => mod.LayoutNewPosts)
+  import("@/src/app/components/templates/LayoutNewPosts").then(
+    (mod) => mod.LayoutNewPosts
+  )
 );
 
 const TopCategoryPosts = dynamic(() =>
@@ -13,7 +17,9 @@ const TopCategoryPosts = dynamic(() =>
 );
 
 const SliderBar = dynamic(() =>
-  import("@/src/app/components/organisms/SliderBar").then((mod) => mod.SliderBar)
+  import("@/src/app/components/organisms/SliderBar").then(
+    (mod) => mod.SliderBar
+  )
 );
 
 export const Sesion4 = () => {

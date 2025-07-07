@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
       seo.fullHead || "",
       seo.focusKeywords || ""
     ),
-    robots: "index, follow",
+    robots: "index, follow"
   };
 }
 export default function LienHe() {

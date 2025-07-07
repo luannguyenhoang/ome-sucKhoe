@@ -1,13 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
 import CardNewPostInDetailPost from "@/src/app/components/atoms/CardNewPostInDetailPost";
 import { LoadingNewPost } from "@/src/app/components/atoms/LoadingNewPost";
-import { ALL_CATEGORIES, ALLOWED_CATEGORIES } from "@/src/utils/category";
+import { ALL_CATEGORIES } from "@/src/utils/category";
+import { useEffect, useState } from "react";
 
 export const NewPostInDetailPost = ({
   showTitle = true,
   count = 3,
-  textColor = "text-black",
+  textColor = "text-black"
 }: {
   showTitle?: boolean;
   count?: number;
@@ -24,9 +24,12 @@ export const NewPostInDetailPost = ({
       setIsLoading(true);
 
       try {
-        const res = await fetch(`/suc-khoe/api/posts?size=${count * 2}&offset=0`, {
-          next: { revalidate: 1 },
-        });
+        const res = await fetch(
+          `/suc-khoe/api/posts?size=${count * 2}&offset=0`,
+          {
+            next: { revalidate: 1 }
+          }
+        );
 
         if (!res.ok) {
           throw new Error(`Posts fetch failed with status: ${res.statusText}`);
@@ -40,10 +43,10 @@ export const NewPostInDetailPost = ({
               ALL_CATEGORIES.includes(category)
             )
           );
-          
+
           const limitedPosts = filteredPosts.slice(0, count);
           setPosts(limitedPosts);
-          
+
           const counts: { [key: string]: number } = {};
           await Promise.all(
             limitedPosts.map(async (post) => {
@@ -82,16 +85,6 @@ export const NewPostInDetailPost = ({
     getLatestPosts();
   }, [count]);
 
-  if (posts.length === 0 && !isLoading) {
-    return (
-      <div className="py-10">
-        <div className="max-w-[900px] mx-auto text-center">
-          <p>Không có bài viết mới nào.</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col mb-6">
       {showTitle && (
@@ -109,14 +102,24 @@ export const NewPostInDetailPost = ({
       {isLoading ? (
         <LoadingNewPost count={count} />
       ) : (
-        posts.map((post, index) => (
-          <CardNewPostInDetailPost
-            key={index}
-            post={post}
-            categoryCounts={categoryCounts}
-            textColor={textColor}
-          />
-        ))
+        <>
+          {posts.length === 0 ? (
+            <div className="py-10">
+              <div className="max-w-[900px] mx-auto text-center">
+                <p>Không có bài viết mới nào.</p>
+              </div>
+            </div>
+          ) : (
+            posts.map((post, index) => (
+              <CardNewPostInDetailPost
+                key={index}
+                post={post}
+                categoryCounts={categoryCounts}
+                textColor={textColor}
+              />
+            ))
+          )}
+        </>
       )}
     </div>
   );

@@ -3,15 +3,14 @@ import { getCategoryDisplayName } from "@/src/utils/getCategoryDisplayNameAndCol
 import Image from "next/image";
 import { forwardRef } from "react";
 
-const ListCategorySlider = forwardRef<HTMLButtonElement, {
-  post: any;
-  isActive?: boolean;
-  onClick: () => void;
-}>(function ListCategorySlider({
-  post,
-  isActive = false,
-  onClick,
-}, ref) {
+const ListCategorySlider = forwardRef<
+  HTMLButtonElement,
+  {
+    post: any;
+    isActive?: boolean;
+    onClick: () => void;
+  }
+>(function ListCategorySlider({ post, isActive = false, onClick }, ref) {
   return (
     <button
       ref={ref}

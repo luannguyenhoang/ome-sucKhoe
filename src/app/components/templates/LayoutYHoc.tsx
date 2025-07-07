@@ -47,4 +47,4 @@ export const LayoutYHoc = ({ path }: { path?: string }) => {
       </LayoutDefault>
     </div>
   );
-}
+};

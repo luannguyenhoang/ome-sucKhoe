@@ -2,36 +2,43 @@ export const defaultTopics = [
   {
     id: 1,
     title: "Y học cổ truyền",
-    imageUrl: "/suc-khoe/demo.jpg",
+    imageUrl: "/suc-khoe/no-image.jpeg",
     alt: "Y học cổ truyền",
-    slug: "y-hoc-co-truyen",
-    },
-    {
-      id: 2,
-      title: "Y học cộng đồng",
-      imageUrl: "/suc-khoe/demo.jpg",
-      alt: "Y học cộng đồng",
-      slug: "y-hoc-cong-dong",
-    },
-    {
-      id: 3,
-      title: "Nhi khoa",
-      imageUrl: "/suc-khoe/demo.jpg",
-      alt: "Nhi khoa",
-      slug: "nhi-khoa",
-    },
-    {
-      id: 4,
-      title: "Sản phụ khoa",
-      imageUrl: "/suc-khoe/demo.jpg",
-      alt: "Sản phụ khoa",
-      slug: "san-phu-khoa",
-    },
-    {
-      id: 5,
-      title: "Y học thể thao",
-      imageUrl: "/suc-khoe/demo.jpg",
-      alt: "Y học thể thao",
-      slug: "y-hoc-the-thao",
-    },
-  ];
+    slug: "y-hoc-co-truyen"
+  },
+  {
+    id: 2,
+    title: "Y học cộng đồng",
+    imageUrl: "/suc-khoe/no-image.jpeg",
+    alt: "Y học cộng đồng",
+    slug: "y-hoc-cong-dong"
+  },
+  {
+    id: 3,
+    title: "Vận động",
+    imageUrl: "/suc-khoe/no-image.jpeg",
+    alt: "Vận động",
+    slug: "van-dong"
+  },
+  {
+    id: 4,
+    title: "Spa & Massage",
+    imageUrl: "/suc-khoe/no-image.jpeg",
+    alt: "Spa & Massage",
+    slug: "spa-massage"
+  },
+  {
+    id: 5,
+    title: "Dinh dưỡng",
+    imageUrl: "/suc-khoe/no-image.jpeg",
+    alt: "Dinh dưỡng",
+    slug: "dinh-duong"
+  },
+  {
+    id: 6,
+    title: "Phục hồi chức năng",
+    imageUrl: "/suc-khoe/no-image.jpeg",
+    alt: "Phục hồi chức năng",
+    slug: "phuc-hoi-chuc-nang"
+  }
+];

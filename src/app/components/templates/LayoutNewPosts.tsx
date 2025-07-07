@@ -1,13 +1,12 @@
 "use client";
-import { DefaultNewPosts } from "@/src/data/DefaultPosts";
 import { formatDate } from "@/src/utils/date";
 import { getCategoryColor } from "@/src/utils/getCategoryDisplayNameAndColor";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import xss from "xss";
-import ButtonAnimation from "../atoms/ButtonAnimation";
 import AnimateOnScroll from "../atoms/AnimateOnScroll";
+import ButtonAnimation from "../atoms/ButtonAnimation";
 
 type CategoryPostsProps = {
   categorySlug: string;
@@ -18,7 +17,7 @@ type CategoryPostsProps = {
 export const LayoutNewPosts = ({
   categorySlug,
   categoryDisplayName,
-  marginTop = "",
+  marginTop = ""
 }: CategoryPostsProps) => {
   const [posts, setPosts] = useState<any[]>();
   const [isLoading, setIsLoading] = useState(true);
@@ -31,7 +30,7 @@ export const LayoutNewPosts = ({
         const res = await fetch(
           `/suc-khoe/api/posts?size=3&offset=0&category=${categorySlug}`,
           {
-            next: { revalidate: 1 },
+            next: { revalidate: 1 }
           }
         );
 
@@ -153,7 +152,7 @@ export const LayoutNewPosts = ({
                         <p
                           className="text-gray-500 text-md mb-4 line-clamp-2 overflow-hidden"
                           dangerouslySetInnerHTML={{
-                            __html: xss(post?.excerpt),
+                            __html: xss(post?.excerpt)
                           }}
                         />
                         <div className="flex items-center text-xs text-gray-500 mb-4">

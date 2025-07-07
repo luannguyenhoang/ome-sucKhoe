@@ -1,6 +1,10 @@
 import { getClient } from "@/src/lib/ApolloClient";
 import { NextRequest, NextResponse } from "next/server";
-import { GET_POSTS, GET_POSTS_BY_CATEGORY, SEARCH_POSTS } from "../Graphql/posts";
+import {
+  GET_POSTS,
+  GET_POSTS_BY_CATEGORY,
+  SEARCH_POSTS
+} from "../Graphql/posts";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -15,16 +19,22 @@ export async function GET(req: NextRequest) {
 
   try {
     let data;
-    
+
     if (search) {
       // Sử dụng query tìm kiếm
       const variables = { search, size: pageSize, offset: offsetValue };
-      const response = await getClient().query({ query: SEARCH_POSTS, variables });
+      const response = await getClient().query({
+        query: SEARCH_POSTS,
+        variables
+      });
       data = response.data;
     } else if (category) {
       // Sử dụng query lọc theo danh mục
       const variables = { slug: category, size: pageSize, offset: offsetValue };
-      const response = await getClient().query({ query: GET_POSTS_BY_CATEGORY, variables });
+      const response = await getClient().query({
+        query: GET_POSTS_BY_CATEGORY,
+        variables
+      });
       data = response.data;
     } else {
       // Query thông thường
@@ -46,22 +56,32 @@ export async function GET(req: NextRequest) {
         slug: node.slug,
         date: node.date,
         excerpt: node.excerpt,
-        featured_image: node.featuredImage?.node?.mediaItemUrl || "/suc-khoe/no-image.jpeg",
+        featured_image:
+          node.featuredImage?.node?.mediaItemUrl || "/suc-khoe/no-image.jpeg",
         categories:
-          node.categories?.nodes.map((category: any) => category.slug) || [],
+          node.categories?.nodes.map((category: any) => category.slug) || []
       })) || [];
 
     if (additionalCategory) {
-      posts = posts.filter((post: { categories?: string[] }) => 
-        post.categories && post.categories.includes(additionalCategory)
+      posts = posts.filter(
+        (post: { categories?: string[] }) =>
+          post.categories && post.categories.includes(additionalCategory)
       );
     }
 
-    const totalPosts = additionalCategory ? posts.length.toString() : data.posts.pageInfo.offsetPagination.total.toString();
+    const totalPosts = additionalCategory
+      ? posts.length.toString()
+      : data.posts.pageInfo.offsetPagination.total.toString();
     const pageInfo = {
-      hasMore: additionalCategory ? false : data.posts.pageInfo.offsetPagination.hasMore,
-      hasPrevious: additionalCategory ? false : data.posts.pageInfo.offsetPagination.hasPrevious,
-      total: additionalCategory ? posts.length : data.posts.pageInfo.offsetPagination.total,
+      hasMore: additionalCategory
+        ? false
+        : data.posts.pageInfo.offsetPagination.hasMore,
+      hasPrevious: additionalCategory
+        ? false
+        : data.posts.pageInfo.offsetPagination.hasPrevious,
+      total: additionalCategory
+        ? posts.length
+        : data.posts.pageInfo.offsetPagination.total
     };
 
     return NextResponse.json({ posts, totalPosts, pageInfo }, { status: 200 });

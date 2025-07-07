@@ -4,17 +4,21 @@ import dynamic from "next/dynamic";
 import { ReactNode } from "react";
 
 const SliderBar = dynamic(() =>
-  import("@/src/app/components/organisms/SliderBar").then((mod) => mod.SliderBar)
+  import("@/src/app/components/organisms/SliderBar").then(
+    (mod) => mod.SliderBar
+  )
 );
 
 const SocialNetworkLinks = dynamic(() =>
-  import("@/src/app/components/atoms/SocialNetworkLinks").then((mod) => mod.SocialNetworkLinks)
+  import("@/src/app/components/atoms/SocialNetworkLinks").then(
+    (mod) => mod.SocialNetworkLinks
+  )
 );
 
 export const LayoutPost = ({
   children,
   post,
-  m,
+  m
 }: {
   children: ReactNode;
   post: any;

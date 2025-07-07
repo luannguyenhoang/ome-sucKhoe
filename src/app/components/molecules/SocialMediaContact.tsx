@@ -101,7 +101,6 @@ export const SocialMediaContact = () => {
         </div>
       </div>
       <div className="flex flex-col space-y-2 relative">
-        
         {contactData?.content?.map((item: any, index: number) => (
           <Link
             key={index}

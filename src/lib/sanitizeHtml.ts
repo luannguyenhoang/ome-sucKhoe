@@ -6,7 +6,7 @@ export const clean = (dirty: string) =>
     allowedAttributes: {
       a: ["href", "name", "target"],
       img: ["src", "srcset", "alt", "title", "width", "height", "loading"],
-      "*": ["class", "id"],
+      "*": ["class", "id"]
     },
     allowedSchemes: ["http", "https", "ftp", "mailto", "tel"],
     selfClosing: [
@@ -18,6 +18,6 @@ export const clean = (dirty: string) =>
       "basefont",
       "input",
       "link",
-      "meta",
-    ],
+      "meta"
+    ]
   });

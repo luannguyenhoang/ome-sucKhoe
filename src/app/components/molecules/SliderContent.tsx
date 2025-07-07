@@ -27,7 +27,7 @@ export default function SliderContent({
   handleMouseDown,
   handleMouseMove,
   handleMouseUp,
-  handleMouseLeave,
+  handleMouseLeave
 }: SliderContentProps) {
   return (
     <div
@@ -45,7 +45,7 @@ export default function SliderContent({
         className="transition-transform duration-700 ease-in-out"
         style={{
           transform: `translateX(-${currentSlide * 100}%)`,
-          display: "flex",
+          display: "flex"
         }}
       >
         {posts.map((post, index) => (

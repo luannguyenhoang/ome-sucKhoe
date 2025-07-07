@@ -16,7 +16,7 @@ export default function SidebarNavigation({
   currentSlide,
   sidebarRef,
   onSlideClick,
-  registerActiveItemRef,
+  registerActiveItemRef
 }: SidebarNavigationProps) {
   return (
     <div className="absolute lg:top-0 lg:right-0 bottom-0 lg:h-full h-fit lg:w-[30%] w-full bg-black/65 lg:bg-black/40 flex items-center">
@@ -38,4 +38,4 @@ export default function SidebarNavigation({
       </div>
     </div>
   );
-} 
+}

@@ -1,7 +1,9 @@
 import dynamic from "next/dynamic";
 
 const MostViewedPost = dynamic(() =>
-  import("@/src/app/components/organisms/MostViewedPost").then((mod) => mod.MostViewedPost)
+  import("@/src/app/components/organisms/MostViewedPost").then(
+    (mod) => mod.MostViewedPost
+  )
 );
 
 const SocialMediaContact = dynamic(() =>
@@ -11,7 +13,9 @@ const SocialMediaContact = dynamic(() =>
 );
 
 const NewPostInDetailPost = dynamic(() =>
-  import("@/src/app/components/organisms/NewPostInDetailPost").then((mod) => mod.NewPostInDetailPost)
+  import("@/src/app/components/organisms/NewPostInDetailPost").then(
+    (mod) => mod.NewPostInDetailPost
+  )
 );
 
 const Event = dynamic(() =>
@@ -22,10 +26,14 @@ const Category = dynamic(() =>
   import("@/src/app/components/molecules/Category").then((mod) => mod.Category)
 );
 const FormWrapper = dynamic(() =>
-  import("@/src/app/components/molecules/FormWrapper").then((mod) => mod.FormWrapper)
+  import("@/src/app/components/molecules/FormWrapper").then(
+    (mod) => mod.FormWrapper
+  )
 );
 const UpcomingEvents = dynamic(() =>
-  import("@/src/app/components/organisms/UpcomingEvents").then((mod) => mod.UpcomingEvents)
+  import("@/src/app/components/organisms/UpcomingEvents").then(
+    (mod) => mod.UpcomingEvents
+  )
 );
 
 export const SliderBar = ({
@@ -36,7 +44,7 @@ export const SliderBar = ({
   showCategory = false,
   showForm = false,
   showUpcomingEvents = false,
-  path,
+  path
 }: {
   showNewPostInDetail?: boolean;
   showContact?: boolean;

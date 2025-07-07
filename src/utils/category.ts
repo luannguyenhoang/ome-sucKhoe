@@ -4,7 +4,7 @@ export const ALLOWED_CATEGORIES = [
   "van-dong",
   "spa-massage",
   "dinh-duong",
-  "phuc-hoi-chuc-nang",
+  "phuc-hoi-chuc-nang"
 ];
 
 export const ALL_CATEGORIES = [
@@ -54,5 +54,5 @@ export const ALL_CATEGORIES = [
   "co-xuong-khop",
   "ho-hap",
   "ngon-ngu-giao-tiep",
-  "than-kinh",
+  "than-kinh"
 ];

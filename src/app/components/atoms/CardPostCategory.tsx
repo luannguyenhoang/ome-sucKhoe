@@ -2,7 +2,7 @@
 import { formatDate } from "@/src/utils/date";
 import {
   getCategoryColor,
-  getCategoryDisplayName,
+  getCategoryDisplayName
 } from "@/src/utils/getCategoryDisplayNameAndColor";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +16,7 @@ export default function CardPostCategory({
   image,
   path,
   category,
-  date,
+  date
 }: {
   title?: string;
   desc?: string;

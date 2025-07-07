@@ -13,7 +13,7 @@ export default function CategoryTabs({
   selectedTabCategory,
   isPendingCategoryChange,
   isLoading,
-  onCategoryChange,
+  onCategoryChange
 }: any) {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
@@ -99,7 +99,7 @@ export default function CategoryTabs({
     onFromEdge: updateNavigation,
     onTransitionEnd: updateNavigation,
     onTransitionStart: updateNavigation,
-    onProgress: updateNavigation,
+    onProgress: updateNavigation
   };
 
   return (

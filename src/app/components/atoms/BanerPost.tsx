@@ -5,7 +5,7 @@ import { formatDate } from "@/src/utils/date";
 import Image from "next/image";
 
 export const BanerPost = ({ post }: { post: any }) => {
-  return (    
+  return (
     <div className="relative w-full">
       <div className="relative w-full h-[500px] lg:h-[610px]">
         <Image
@@ -24,7 +24,7 @@ export const BanerPost = ({ post }: { post: any }) => {
             <h1
               className="text-4xl lg:text-6xl font-bold text-white mb-2"
               dangerouslySetInnerHTML={{
-                __html: clean(post?.title),
+                __html: clean(post?.title)
               }}
             />
           </div>

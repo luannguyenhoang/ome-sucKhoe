@@ -6,7 +6,7 @@ export const useSizeWindow = () => {
   const hasWindow = typeof window !== "undefined";
   const [size, setSize] = useState({
     width: hasWindow ? window.innerWidth : 0,
-    height: hasWindow ? window.scrollY : 0,
+    height: hasWindow ? window.scrollY : 0
   });
 
   useEffect(() => {

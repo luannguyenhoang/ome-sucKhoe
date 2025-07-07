@@ -6,7 +6,9 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 
 const TagCategory = dynamic(() =>
-  import("@/src/app/components/atoms/TagCategory").then((mod) => mod.TagCategory)
+  import("@/src/app/components/atoms/TagCategory").then(
+    (mod) => mod.TagCategory
+  )
 );
 
 const SocialNetworkLinks = dynamic(() =>
@@ -25,7 +27,7 @@ export const Post = ({ post }: { post: any }) => {
               <div className={styles["post__main"] + " lg:px-0"}>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: clean(post?.content),
+                    __html: clean(post?.content)
                   }}
                 />
               </div>
