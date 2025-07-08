@@ -21,10 +21,12 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Navbar />
-        {children}
-        <Footer />
-        <Cta />
+        <div className="max-w-[1920px] mx-auto">
+          <Navbar />
+          {children}
+          <Footer />
+          <Cta />
+        </div>
       </body>
     </html>
   );
