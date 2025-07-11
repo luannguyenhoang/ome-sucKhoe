@@ -1,7 +1,7 @@
+import { menus, TMenuItem } from "@/src/router/router";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { menus, TMenuItem } from "@/src/router/router";
 
 const NestedMobileItem = ({
   item,
@@ -21,6 +21,7 @@ const NestedMobileItem = ({
   const itemId = `${level}-${item.path}`;
   const hasChildren = item.childs && item.childs.length > 0;
   const isOpen = openSubmenus[itemId] || false;
+  const isYHoc = item.path === "/y-hoc";
 
   return (
     <li
@@ -31,28 +32,35 @@ const NestedMobileItem = ({
           isActive(item.path) ? "bg-gray-50" : ""
         }`}
       >
-        <Link
-          href={item.path || "/"}
-          className={`block py-3 px-4 text-gray-800 hover:text-[#fdc800] font-medium flex-grow relative ${
-            level > 0 ? "pl-4" : ""
-          }`}
-          onClick={(e) => {
-            if (hasChildren) {
-              e.preventDefault();
-            } else {
-              onClose();
-            }
-          }}
-        >
-          {item.title}
-          {isActive(item.path) && (
-            <span className="absolute left-0 top-0 bottom-0 w-1 bg-[#fdc800]"></span>
-          )}
-        </Link>
+        {isYHoc ? (
+          <span
+            className={`block py-3 px-4 text-gray-800 font-medium flex-grow relative w-full ${
+              level > 0 ? "pl-4" : ""
+            }`}
+          >
+            {item.title}
+            {isActive(item.path) && (
+              <span className="absolute left-0 top-0 bottom-0 w-1 bg-[#fdc800]"></span>
+            )}
+          </span>
+        ) : (
+          <Link
+            href={item.path || "/"}
+            className={`block py-3 px-4 text-gray-800 hover:text-[#fdc800] font-medium flex-grow relative w-full ${
+              level > 0 ? "pl-4" : ""
+            }`}
+            onClick={() => onClose()}
+          >
+            {item.title}
+            {isActive(item.path) && (
+              <span className="absolute left-0 top-0 bottom-0 w-1 bg-[#fdc800]"></span>
+            )}
+          </Link>
+        )}
 
         {hasChildren && (
           <div
-            className="p-3 text-gray-800"
+            className="p-3 text-gray-800 w-full flex justify-end"
             onClick={(e) => {
               e.preventDefault();
               toggleSubmenu(itemId);
@@ -139,6 +147,7 @@ export default function MobileMenu({
 
   const handleClose = () => {
     setMobileMenuOpen(false);
+    setOpenSubmenus({}); // Reset submenu open states
   };
 
   return (
@@ -184,7 +193,7 @@ export default function MobileMenu({
 
           <div
             ref={menuRef}
-            className="lg:hidden bg-white shadow-lg absolute left-0 right-0 top-32 z-20"
+            className="lg:hidden bg-white shadow-lg absolute left-0 right-0 top-32 z-20 max-h-[70vh] overflow-y-auto"
           >
             <nav>
               <ul className="space-y-0">

@@ -84,7 +84,7 @@ export const menus: TMenus = [
         title: "Võ thuật"
       },
       {
-        path: "/van-dong/vo-thuat",
+        path: "/van-dong/vo-dao",
         title: "Võ đạo"
       },
       {
