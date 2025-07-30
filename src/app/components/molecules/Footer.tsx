@@ -177,6 +177,37 @@ export const Footer = () => {
               count={2}
               textColor="text-white"
             />
+            <h3 className="text-xl font-bold mb-6">Tải APP</h3>
+            <div className="flex flex-col gap-2">
+              <Link
+                href={
+                  "https://apps.apple.com/us/app/eome/id1549498898?zarsrc=1303"
+                }
+                className="cursor-pointer"
+                target="_blank"
+              >
+                <Image
+                  src={"/suc-khoe/AppStore-1.png"}
+                  width={200}
+                  height={200}
+                  alt="image"
+                />
+              </Link>
+              <Link
+                href={
+                  "https://play.google.com/store/apps/details?id=org.vmcvietnam.elearning&zarsrc=1303&pli=1"
+                }
+                className="cursor-pointer"
+                target="_blank"
+              >
+                <Image
+                  src={"/suc-khoe/Google-1.png"}
+                  width={200}
+                  height={200}
+                  alt="image"
+                />
+              </Link>
+            </div>
           </div>
         </div>
 

@@ -3,9 +3,10 @@ import Navbar from "@/src/app/components/organisms/Navbar";
 import "@/src/styles/globals.css";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { getSeoData } from "../utils/getSeoData";
-import { generateMetadataFromFullHead } from "../utils/seoUtils";
-import { GET_SEO_TRANG_CHU } from "./api/Graphql/trangChu";
+import { getSeoData } from "@/src/utils/getSeoData";
+import { generateMetadataFromFullHead } from "@/src/utils/seoUtils";
+import { GET_SEO_TRANG_CHU } from "@/src/app/api/Graphql/trangChu";
+import { TrackingSession } from "@/src/app/components/atoms/TrackingSession";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { seo } = await getSeoData(GET_SEO_TRANG_CHU, "pageBy");
@@ -37,6 +38,7 @@ export default function RootLayout({
       </head>
       <body>
         <div className="max-w-[1920px] mx-auto">
+          <TrackingSession />
           <Navbar />
           {children}
           <Footer />

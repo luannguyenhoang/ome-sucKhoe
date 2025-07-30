@@ -2,22 +2,47 @@
 
 import { useEffect } from "react";
 
+// Hàm đọc các trường từ sessionStorage
+const getTrackingParamsFromSession = (): string => {
+  const keys = [
+    "utm_source",
+    "utm_campaign",
+    "utm_medium",
+    "utm_content",
+    "utm_term",
+    "utm_referrer"
+  ];
+
+  const queryParams = new URLSearchParams();
+
+  keys.forEach((key) => {
+    const value = sessionStorage.getItem(key);
+    if (value && value.trim() !== "") {
+      queryParams.set(key, value);
+    }
+  });
+
+  return queryParams.toString(); // Ví dụ: utm_source=zalo&utm_campaign=test...
+};
+
+// Hàm tạo iframe
 const createIframeForSam = (
   url: string,
   uuid: string,
   divClass: string
 ): HTMLIFrameElement => {
-  const referrer = document.referrer || window.location.origin;
-  const iframeUrl = `${url}?referrer=${encodeURIComponent(referrer)}`;
+  const trackingQuery = getTrackingParamsFromSession();
+  const fullUrl = trackingQuery ? `${url}?${trackingQuery}` : url;
+
   const iframe = document.createElement("iframe");
-  iframe.setAttribute("src", iframeUrl);
-  iframe.setAttribute("title", "Form đăng ký SAM");
+  iframe.setAttribute("src", fullUrl);
   iframe.style.width = "100%";
   iframe.style.minHeight = "450px";
   iframe.classList.add(divClass);
   return iframe;
 };
 
+// Hàm gắn iframe vào container
 const attachIframeForSam = (
   url: string,
   uuid: string,
