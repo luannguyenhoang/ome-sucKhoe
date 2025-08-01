@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import FormExcel from "../molecules/FormExcel";
 
 const MostViewedPost = dynamic(() =>
   import("@/src/app/components/organisms/MostViewedPost").then(
@@ -62,7 +63,7 @@ export const SliderBar = ({
       {showContact && <SocialMediaContact />}
       {showNewPost && <MostViewedPost />}
       {showCategory && <Category path={path} />}
-      {showForm && <FormWrapper showTitle={true} />}
+      {showForm && <FormExcel />}
       {showUpcomingEvents && <UpcomingEvents />}
     </div>
   );
